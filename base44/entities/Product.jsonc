@@ -1,0 +1,79 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "facility_id": {
+      "type": "string"
+    },
+    "facility_name": {
+      "type": "string"
+    },
+    "name_ar": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "fiber",
+        "agricultural",
+        "compost",
+        "crafts",
+        "reused",
+        "sustainable"
+      ],
+      "default": "fiber"
+    },
+    "description_ar": {
+      "type": "string"
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "source_material": {
+      "type": "string"
+    },
+    "material_quantity_kg": {
+      "type": "number",
+      "default": 0
+    },
+    "pathway": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number",
+      "default": 0
+    },
+    "inventory": {
+      "type": "number",
+      "default": 0
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "sustainability_ar": {
+      "type": "string"
+    },
+    "sustainability_en": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name_ar"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

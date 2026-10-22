@@ -1,0 +1,78 @@
+{
+  "name": "CollectionRequest",
+  "type": "object",
+  "properties": {
+    "request_code": {
+      "type": "string"
+    },
+    "waste_id": {
+      "type": "string"
+    },
+    "waste_code": {
+      "type": "string"
+    },
+    "farm_name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "facility_id": {
+      "type": "string"
+    },
+    "facility_name": {
+      "type": "string"
+    },
+    "quantity_tons": {
+      "type": "number",
+      "default": 0
+    },
+    "distance_km": {
+      "type": "number",
+      "default": 0
+    },
+    "requested_date": {
+      "type": "string"
+    },
+    "scheduled_date": {
+      "type": "string"
+    },
+    "received_quantity_tons": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "requested",
+        "accepted",
+        "scheduled",
+        "in_transit",
+        "received",
+        "at_facility",
+        "processing",
+        "recycled",
+        "rejected"
+      ],
+      "default": "requested"
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

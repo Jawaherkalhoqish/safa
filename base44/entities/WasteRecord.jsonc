@@ -1,0 +1,92 @@
+{
+  "name": "WasteRecord",
+  "type": "object",
+  "properties": {
+    "waste_code": {
+      "type": "string"
+    },
+    "farm_id": {
+      "type": "string"
+    },
+    "farm_name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "palm_id": {
+      "type": "string"
+    },
+    "palm_identifier": {
+      "type": "string"
+    },
+    "waste_type": {
+      "type": "string",
+      "enum": [
+        "fronds",
+        "trunks",
+        "fiber",
+        "other"
+      ],
+      "default": "fronds"
+    },
+    "quantity_tons": {
+      "type": "number",
+      "default": 0
+    },
+    "generated_date": {
+      "type": "string"
+    },
+    "predicted_date": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "predicted",
+        "ready",
+        "scheduled",
+        "collected",
+        "processing",
+        "recycled",
+        "routed",
+        "needs_verification",
+        "special_pathway",
+        "burning_risk"
+      ],
+      "default": "predicted"
+    },
+    "risk_classification": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "needs_verification",
+        "special"
+      ],
+      "default": "standard"
+    },
+    "estimated_value": {
+      "type": "number",
+      "default": 0
+    },
+    "destination": {
+      "type": "string"
+    },
+    "pathway": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

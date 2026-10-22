@@ -6,6 +6,32 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
+import { LanguageProvider } from '@/lib/i18n';
+import Landing from '@/pages/Landing';
+import Access from '@/pages/Access';
+import Dashboard from '@/pages/Dashboard';
+import MyPalms from '@/pages/MyPalms';
+import PalmProfile from '@/pages/PalmProfile';
+import PalmHealth from '@/pages/PalmHealth';
+import Weevil from '@/pages/Weevil';
+import SmartMap from '@/pages/SmartMap';
+import Waste from '@/pages/Waste';
+import Collection from '@/pages/Collection';
+import Circular from '@/pages/Circular';
+import Store from '@/pages/Store';
+import Impact from '@/pages/Impact';
+import Alerts from '@/pages/Alerts';
+import Authority from '@/pages/Authority';
+import Facility from '@/pages/Facility';
+import Methodology from '@/pages/Methodology';
+import Legal from '@/pages/Legal';
+import Admin from '@/pages/Admin';
+import Tour from '@/pages/Tour';
+import AppShell from '@/components/AppShell';
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
+import ForgotPassword from '@/pages/ForgotPassword';
+import ResetPassword from '@/pages/ResetPassword';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -35,6 +61,33 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       {/* Add your page Route elements here */}
+      <Route path="/" element={<Landing />} />
+      <Route path="/access" element={<Access />} />
+      <Route path="/tour" element={<Tour />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route element={<AppShell />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/palms" element={<MyPalms />} />
+        <Route path="/palms/:id" element={<PalmProfile />} />
+        <Route path="/health" element={<PalmHealth />} />
+        <Route path="/weevil" element={<Weevil />} />
+        <Route path="/map" element={<SmartMap />} />
+        <Route path="/waste" element={<Waste />} />
+        <Route path="/collection" element={<Collection />} />
+        <Route path="/circular" element={<Circular />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/impact" element={<Impact />} />
+        <Route path="/alerts" element={<Alerts />} />
+        <Route path="/authority" element={<Authority />} />
+        <Route path="/facility" element={<Facility />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/methodology" element={<Methodology />} />
+        <Route path="/privacy" element={<Legal />} />
+        <Route path="/terms" element={<Legal />} />
+      </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
@@ -46,10 +99,12 @@ function App() {
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <Router>
-          <ScrollToTop />
-          <AuthenticatedApp />
-        </Router>
+        <LanguageProvider>
+          <Router>
+            <ScrollToTop />
+            <AuthenticatedApp />
+          </Router>
+        </LanguageProvider>
         <Toaster />
       </QueryClientProvider>
     </AuthProvider>

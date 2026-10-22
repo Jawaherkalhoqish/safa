@@ -1,0 +1,82 @@
+{
+  "name": "Alert",
+  "type": "object",
+  "properties": {
+    "alert_code": {
+      "type": "string"
+    },
+    "palm_id": {
+      "type": "string"
+    },
+    "palm_identifier": {
+      "type": "string"
+    },
+    "farm_name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "rpw_suspicion",
+        "sensor_anomaly",
+        "waste_prediction",
+        "collection",
+        "recycling",
+        "product"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "low"
+    },
+    "indicator": {
+      "type": "number"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "title": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "recommendation": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "acknowledged",
+        "actioned",
+        "closed"
+      ],
+      "default": "new"
+    }
+  },
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "SensorReading",
+  "type": "object",
+  "properties": {
+    "palm_id": {
+      "type": "string"
+    },
+    "palm_identifier": {
+      "type": "string"
+    },
+    "recorded_at": {
+      "type": "string"
+    },
+    "electrical_activity": {
+      "type": "number"
+    },
+    "acoustic_activity": {
+      "type": "number"
+    },
+    "soil_moisture": {
+      "type": "number"
+    },
+    "temperature": {
+      "type": "number"
+    },
+    "irrigation_status": {
+      "type": "string"
+    },
+    "battery_level": {
+      "type": "number"
+    }
+  },
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

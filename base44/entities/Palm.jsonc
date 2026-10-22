@@ -1,0 +1,115 @@
+{
+  "name": "Palm",
+  "type": "object",
+  "properties": {
+    "farm_id": {
+      "type": "string"
+    },
+    "farm_name": {
+      "type": "string"
+    },
+    "palm_identifier": {
+      "type": "string"
+    },
+    "variety": {
+      "type": "string"
+    },
+    "age_years": {
+      "type": "number"
+    },
+    "region": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "planting_area": {
+      "type": "string"
+    },
+    "irrigation_type": {
+      "type": "string"
+    },
+    "health_score": {
+      "type": "number",
+      "default": 75
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "stable",
+        "attention",
+        "critical"
+      ],
+      "default": "stable"
+    },
+    "rpw_risk": {
+      "type": "number",
+      "default": 0.1
+    },
+    "predicted_waste_tons": {
+      "type": "number",
+      "default": 0
+    },
+    "predicted_date": {
+      "type": "string"
+    },
+    "predicted_classification": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "needs_verification",
+        "special"
+      ],
+      "default": "standard"
+    },
+    "electrical_activity": {
+      "type": "number"
+    },
+    "acoustic_activity": {
+      "type": "number"
+    },
+    "soil_moisture": {
+      "type": "number"
+    },
+    "temperature": {
+      "type": "number"
+    },
+    "irrigation_status": {
+      "type": "string"
+    },
+    "sensor_unit": {
+      "type": "string"
+    },
+    "last_sensor_at": {
+      "type": "string"
+    },
+    "last_inspection_at": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "palm_identifier"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

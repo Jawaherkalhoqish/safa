@@ -1,0 +1,62 @@
+{
+  "name": "Farm",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "palm_count": {
+      "type": "number",
+      "default": 0
+    },
+    "area_ha": {
+      "type": "number"
+    },
+    "irrigation_type": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "monitoring",
+        "paused"
+      ],
+      "default": "active"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

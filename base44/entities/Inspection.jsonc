@@ -1,0 +1,82 @@
+{
+  "name": "Inspection",
+  "type": "object",
+  "properties": {
+    "inspection_code": {
+      "type": "string"
+    },
+    "palm_id": {
+      "type": "string"
+    },
+    "palm_identifier": {
+      "type": "string"
+    },
+    "farm_name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "requested_by": {
+      "type": "string"
+    },
+    "assigned_to": {
+      "type": "string"
+    },
+    "requested_at": {
+      "type": "string"
+    },
+    "scheduled_for": {
+      "type": "string"
+    },
+    "completed_at": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "under_review",
+        "scheduled",
+        "inspected",
+        "follow_up",
+        "closed"
+      ],
+      "default": "new"
+    },
+    "result": {
+      "type": "string"
+    }
+  },
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

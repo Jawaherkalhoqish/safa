@@ -1,0 +1,71 @@
+{
+  "name": "RecyclingFacility",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "accepted_materials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capacity_tons": {
+      "type": "number",
+      "default": 0
+    },
+    "available_tons": {
+      "type": "number",
+      "default": 0
+    },
+    "processed_tons": {
+      "type": "number",
+      "default": 0
+    },
+    "output_value": {
+      "type": "number",
+      "default": 0
+    },
+    "contact": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "limited",
+        "paused"
+      ],
+      "default": "active"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {},
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
