@@ -100,14 +100,16 @@ function App() {
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <LanguageProvider>
-          <Router>
-            <CartProvider>
-              <ScrollToTop />
-              <AuthenticatedApp />
-            </CartProvider>
-          </Router>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <Router>
+              <CartProvider>
+                <ScrollToTop />
+                <AuthenticatedApp />
+              </CartProvider>
+            </Router>
+          </LanguageProvider>
+        </ThemeProvider>
         <Toaster />
       </QueryClientProvider>
     </AuthProvider>

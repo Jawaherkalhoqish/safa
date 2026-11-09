@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BellRing, Leaf, Recycle, ShieldAlert } from 'lucide-react';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -6,6 +7,12 @@ import LandingHero from '@/components/LandingHero';
 import HowItWorks from '@/components/HowItWorks';
 import PlatformFlow from '@/components/PlatformFlow';
 import LandingStory from '@/components/LandingStory';
+import AboutSection from '@/components/site/AboutSection';
+import EcosystemJourney from '@/components/site/EcosystemJourney';
+import ServicesSection from '@/components/site/ServicesSection';
+import PricingSection from '@/components/site/PricingSection';
+import PhilosophySection from '@/components/site/PhilosophySection';
+import ContactSection from '@/components/site/ContactSection';
 import { useLang } from '@/lib/i18n';
 
 const STATS = [
@@ -17,7 +24,15 @@ const STATS = [
 
 export default function Landing() {
   const { L, isAr } = useLang();
+  const { hash } = useLocation();
   const Arrow = isAr ? ArrowLeft : ArrowRight;
+
+  useEffect(() => {
+    const id = hash.replace('#', '');
+    if (!id) return undefined;
+    const t = setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+    return () => clearTimeout(t);
+  }, [hash]);
 
   return (
     <div className="min-h-screen bg-safa-cream">
@@ -39,9 +54,15 @@ export default function Landing() {
         </p>
       </section>
 
+      <AboutSection />
       <HowItWorks />
+      <EcosystemJourney />
       <PlatformFlow />
+      <ServicesSection />
+      <PricingSection />
+      <PhilosophySection />
       <LandingStory />
+      <ContactSection />
 
       <section className="bg-safa-cream py-20 md:py-24">
         <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
@@ -51,15 +72,15 @@ export default function Landing() {
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-safa-ink/65">
             {L(
-              'وضع تجريبي كامل للزوار، وواجهات مخصصة للمزارع ومنشآت التدوير والجهات المختصة.',
-              'A full guided demo for visitors, plus dedicated experiences for farmers, recycling facilities and authorities.'
+              'الموقع العام يشرح المنظومة والخدمات والاشتراكات. أما المنصة التفاعلية فتفتح لك تجربة كاملة لكل دور دون تسجيل.',
+              'The public site explains the ecosystem, services and subscriptions. The interactive platform opens a complete experience per role, with no sign-up.'
             )}
           </p>
           <Link
             to="/access"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-safa-palm px-7 py-3.5 text-sm font-semibold text-safa-cream transition hover:bg-safa-palmMid"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-safa-palm px-7 py-3.5 text-sm font-semibold text-safa-bone transition hover:bg-safa-palmMid"
           >
-            {L('ابدأ مع سعفة', 'Explore SA’FA')}
+            {L('اكتشف سعفة', 'Explore SA’FA')}
             <Arrow className="h-4 w-4" />
           </Link>
           <p className="mt-4 text-[11px] text-safa-ink/45">

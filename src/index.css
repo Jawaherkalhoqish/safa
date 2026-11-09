@@ -210,4 +210,29 @@
       radial-gradient(48% 38% at 12% 0%, rgba(125, 139, 93, 0.2), transparent 72%),
       radial-gradient(38% 42% at 92% 8%, rgba(200, 161, 90, 0.12), transparent 74%);
   }
+
+  /* brand text tones that must invert with the theme */
+  .dark .text-safa-palm {
+    color: hsl(var(--safa-forest));
+  }
+  .dark .hover\:text-safa-palm:hover {
+    color: hsl(var(--safa-forest));
+  }
+  .dark .text-safa-cream,
+  .dark .lg\:text-safa-cream,
+  .dark .hover\:text-safa-cream:hover {
+    color: hsl(var(--safa-bone));
+  }
+  .dark .text-safa-cream\/30 { color: hsl(var(--safa-bone) / 0.3); }
+  .dark .text-safa-cream\/35 { color: hsl(var(--safa-bone) / 0.35); }
+  .dark .text-safa-cream\/40 { color: hsl(var(--safa-bone) / 0.4); }
+  .dark .text-safa-cream\/45 { color: hsl(var(--safa-bone) / 0.45); }
+  .dark .text-safa-cream\/50 { color: hsl(var(--safa-bone) / 0.5); }
+  .dark .text-safa-cream\/55 { color: hsl(var(--safa-bone) / 0.55); }
+  .dark .text-safa-cream\/60 { color: hsl(var(--safa-bone) / 0.6); }
+  .dark .text-safa-cream\/70 { color: hsl(var(--safa-bone) / 0.7); }
+  .dark .text-safa-cream\/75 { color: hsl(var(--safa-bone) / 0.75); }
+  .dark .text-safa-cream\/80 { color: hsl(var(--safa-bone) / 0.8); }
+  .dark .text-safa-cream\/85 { color: hsl(var(--safa-bone) / 0.85); }
+  .dark .text-safa-cream\/90 { color: hsl(var(--safa-bone) / 0.9); }
 }
