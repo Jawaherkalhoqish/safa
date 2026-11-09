@@ -1,24 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLang } from '@/lib/i18n';
 import Reveal from '@/components/motion/Reveal';
 import JourneyTrack from '@/components/site/lifecycle/JourneyTrack';
 import JourneyDetail from '@/components/site/lifecycle/JourneyDetail';
+import useJourneyProgress from '@/components/site/lifecycle/useJourneyProgress';
 import { JOURNEY } from '@/components/site/lifecycle/journeyData';
 
 export default function PlatformFlow() {
   const { L } = useLang();
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const { ref, progress } = useJourneyProgress();
+  const [selected, setSelected] = useState(null);
+  const [hovered, setHovered] = useState(null);
 
-  useEffect(() => {
-    if (paused) return undefined;
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return undefined;
-    const t = setInterval(() => setActive((a) => (a + 1) % JOURNEY.length), 3400);
-    return () => clearInterval(t);
-  }, [paused]);
+  const active = Math.round(progress * (JOURNEY.length - 1));
+  const shown = selected === null ? hovered ?? active : selected;
 
   return (
-    <section className="relative overflow-hidden bg-safa-palm py-20 text-safa-cream md:py-28">
+    <section ref={ref} className="relative overflow-hidden bg-safa-palm py-20 text-safa-cream md:py-28">
       <div className="absolute inset-0 grain opacity-40" />
       <div className="journey-aura" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
@@ -31,14 +29,16 @@ export default function PlatformFlow() {
           </h2>
         </div>
 
-        <Reveal
-          onPointerEnter={() => setPaused(true)}
-          onPointerLeave={() => setPaused(false)}
-          onFocusCapture={() => setPaused(true)}
-          onBlurCapture={() => setPaused(false)}
-        >
-          <JourneyTrack stages={JOURNEY} active={active} onSelect={setActive} onHover={setActive} />
-          <JourneyDetail stage={JOURNEY[active]} />
+        <Reveal>
+          <JourneyTrack
+            stages={JOURNEY}
+            active={active}
+            progress={progress}
+            selected={selected}
+            onSelect={(i) => setSelected((current) => (current === i ? null : i))}
+            onHover={setHovered}
+          />
+          <JourneyDetail stage={JOURNEY[shown]} />
         </Reveal>
 
         <p className="mt-8 max-w-3xl text-sm leading-relaxed text-safa-cream/60">

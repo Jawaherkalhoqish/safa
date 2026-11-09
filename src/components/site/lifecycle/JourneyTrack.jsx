@@ -1,12 +1,12 @@
 import { useLang } from '@/lib/i18n';
 import JourneyNode from './JourneyNode';
 
-export default function JourneyTrack({ stages, active, onSelect, onHover }) {
+export default function JourneyTrack({ stages, active, progress, selected, onSelect, onHover }) {
   const { isAr } = useLang();
-  const pct = stages.length > 1 ? (active / (stages.length - 1)) * 100 : 0;
+  const fill = Math.min(1, Math.max(0, progress)) * 100;
 
   return (
-    <div className="mt-12">
+    <div className="mt-12" onMouseLeave={() => onHover(null)}>
       <div className="no-scrollbar overflow-x-auto pb-1 md:overflow-visible">
         <div className="relative min-w-[900px] md:min-w-0">
           <div
@@ -19,12 +19,12 @@ export default function JourneyTrack({ stages, active, onSelect, onHover }) {
               className="absolute inset-y-0 rounded-full"
               style={{
                 insetInlineStart: 0,
-                width: `${pct}%`,
-                transition: 'width 950ms cubic-bezier(0.22, 1, 0.36, 1)',
+                width: `${fill}%`,
+                transition: 'width 700ms cubic-bezier(0.22, 1, 0.36, 1)',
                 background: isAr
-                  ? 'linear-gradient(270deg, rgba(125,139,93,0.85), rgba(200,161,90,0.95))'
-                  : 'linear-gradient(90deg, rgba(125,139,93,0.85), rgba(200,161,90,0.95))',
-                boxShadow: '0 0 14px rgba(200,161,90,0.4)',
+                  ? 'linear-gradient(270deg, rgba(125,139,93,0.55), rgba(200,161,90,0.95))'
+                  : 'linear-gradient(90deg, rgba(125,139,93,0.55), rgba(200,161,90,0.95))',
+                boxShadow: '0 0 16px rgba(200,161,90,0.45)',
               }}
             >
               <span className="journey-runner" />
@@ -36,8 +36,11 @@ export default function JourneyTrack({ stages, active, onSelect, onHover }) {
               <JourneyNode
                 key={stage.key}
                 stage={stage}
+                index={i}
                 isActive={i === active}
                 isDone={i < active}
+                isSelected={i === selected}
+                visible={progress > 0}
                 onSelect={() => onSelect(i)}
                 onHover={() => onHover(i)}
               />

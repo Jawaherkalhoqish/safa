@@ -5,7 +5,7 @@ import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import LandingHero from '@/components/LandingHero';
 import HowItWorks from '@/components/HowItWorks';
-import PlatformFlow from '@/components/PlatformFlow';
+import PlatformFlow from '@/components/site/PlatformFlow';
 import Reveal from '@/components/motion/Reveal';
 import LandingStory from '@/components/LandingStory';
 import AboutSection from '@/components/site/AboutSection';
