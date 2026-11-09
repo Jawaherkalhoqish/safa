@@ -2,7 +2,12 @@ import { cn } from '@/lib/utils';
 
 export default function Panel({ title, subtitle, action, children, className, bodyClassName, icon: Icon }) {
   return (
-    <section className={cn('panel overflow-hidden', className)}>
+    <section
+      className={cn(
+        'panel overflow-hidden transition-shadow duration-300 hover:border-safa-sand/70 hover:shadow-[0_22px_42px_-30px_rgba(30,58,47,0.55)]',
+        className
+      )}
+    >
       {title || action ? (
         <header className="flex flex-wrap items-start justify-between gap-3 border-b border-safa-line/70 px-5 py-4">
           <div className="flex items-start gap-3">

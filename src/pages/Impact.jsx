@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { BarChart3, Boxes, Coins, Flame, Package, Recycle, Truck } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import Panel from '@/components/Panel';
 import StatCard from '@/components/StatCard';
 import DemoTag from '@/components/DemoTag';
+import Reveal from '@/components/motion/Reveal';
 import { Progress } from '@/components/ui/progress';
 import { useAggregate, useCount, useList } from '@/lib/data';
 import { useLang } from '@/lib/i18n';
@@ -14,6 +15,12 @@ export default function Impact() {
   const { rows } = useAggregate('WasteRecord', {}, 'status', ['quantity_tons', 'estimated_value']);
   const { items: requests } = useList('CollectionRequest', {}, { limit: 200, sort: '-created_date' });
   const products = useCount('Product', {});
+  const [barsReady, setBarsReady] = useState(false);
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setBarsReady(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const stats = useMemo(() => {
     const map = {};
@@ -53,26 +60,30 @@ export default function Impact() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-        <StatCard label={L('مخلفات موجهة لدوائر آمنة', 'Diverted to safe pathways')} value={stats.diverted} decimals={1} suffix={L(' طن', ' t')} icon={Recycle} tone="olive" demo />
-        <StatCard label={L('مخلفات معاد تدويرها', 'Recycled')} value={stats.recycled} decimals={1} suffix={L(' طن', ' t')} icon={Recycle} demo />
-        <StatCard label={L('مخلفات معالجة', 'Processed')} value={stats.processed} decimals={1} suffix={L(' طن', ' t')} icon={Boxes} demo />
-        <StatCard label={L('عمليات الجمع', 'Collection operations')} value={requests.length} icon={Truck} demo />
-        <StatCard label={L('منتجات دائرية', 'Circular products')} value={products} icon={Package} tone="gold" demo />
-        <StatCard label={L('القيمة الدائرية التقديرية', 'Estimated circular value')} value={stats.value} suffix={L(' ر.س', ' SAR')} icon={Coins} tone="gold" demo />
+        <StatCard label={L('مخلفات موجهة لدوائر آمنة', 'Diverted to safe pathways')} value={stats.diverted} decimals={1} suffix={L(' طن', ' t')} icon={Recycle} tone="olive" demo delay={0} />
+        <StatCard label={L('مخلفات معاد تدويرها', 'Recycled')} value={stats.recycled} decimals={1} suffix={L(' طن', ' t')} icon={Recycle} demo delay={70} />
+        <StatCard label={L('مخلفات معالجة', 'Processed')} value={stats.processed} decimals={1} suffix={L(' طن', ' t')} icon={Boxes} demo delay={140} />
+        <StatCard label={L('عمليات الجمع', 'Collection operations')} value={requests.length} icon={Truck} demo delay={210} />
+        <StatCard label={L('منتجات دائرية', 'Circular products')} value={products} icon={Package} tone="gold" demo delay={280} />
+        <StatCard label={L('القيمة الدائرية التقديرية', 'Estimated circular value')} value={stats.value} suffix={L(' ر.س', ' SAR')} icon={Coins} tone="gold" demo delay={350} />
       </div>
 
       <div className="grid gap-5 xl:grid-cols-[1.2fr_1fr]">
         <Panel title={L('مؤشرات الأثر', 'Impact indicators')} icon={BarChart3} subtitle={L('بيانات تجريبية | Demo Data', 'Demo Data')}>
           <ul className="space-y-5">
-            {bars.map((b) => (
-              <li key={b.en}>
+            {bars.map((b, i) => (
+              <Reveal as="li" key={b.en} delay={i * 90}>
                 <div className="flex items-center justify-between text-[12px]">
                   <span className="text-safa-ink/70">{L(b.ar, b.en)}</span>
                   <span className="display-num text-base text-safa-palm">{num(b.tons, 1)} {L('طن', 't')}</span>
                 </div>
-                <Progress value={b.pct} className="mt-2 h-2 bg-safa-mist" indicatorClassName="bg-safa-palm" />
+                <Progress
+                  value={barsReady ? b.pct : 0}
+                  className="mt-2 h-2 bg-safa-mist"
+                  indicatorClassName="bg-safa-palm transition-transform duration-1000 ease-out"
+                />
                 <p className="mt-1 text-[10px] text-safa-ink/45">{b.pct}% {L('من إجمالي المخلفات المسجلة', 'of total recorded waste')}</p>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </Panel>

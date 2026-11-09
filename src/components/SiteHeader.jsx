@@ -83,7 +83,7 @@ export default function SiteHeader({ solid = false }) {
           </button>
           <Link
             to="/access"
-            className="hidden rounded-full bg-safa-bone px-4 py-2 text-xs font-semibold text-safa-palmDeep transition hover:bg-white sm:block"
+            className="hidden rounded-full bg-safa-bone px-4 py-2 text-xs font-semibold text-safa-palmDeep transition hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_12px_26px_-14px_rgba(251,249,242,0.7)] sm:block"
           >
             {L('اكتشف سعفة', 'Explore SA’FA')}
           </Link>

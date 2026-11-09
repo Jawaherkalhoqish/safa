@@ -1,5 +1,6 @@
 import { LIFECYCLE } from '@/lib/platform';
 import { useLang } from '@/lib/i18n';
+import Reveal from '@/components/motion/Reveal';
 
 export default function PlatformFlow() {
   const { L, isAr } = useLang();
@@ -15,18 +16,22 @@ export default function PlatformFlow() {
           </h2>
         </div>
 
-        <div className="mt-14 flex snap-x gap-3 overflow-x-auto pb-4 no-scrollbar">
+        <Reveal className="mt-14 flex snap-x gap-3 overflow-x-auto pb-4 no-scrollbar">
           {LIFECYCLE.map((step, i) => (
             <div key={step.en} className="flex shrink-0 items-center gap-3">
-              <div className="w-40 snap-start rounded-2xl border border-white/12 bg-white/5 p-4 backdrop-blur-sm transition hover:border-safa-gold/40 hover:bg-white/10">
-                <step.icon className="h-5 w-5 text-safa-gold" />
+              <div className="group w-40 snap-start rounded-2xl border border-white/12 bg-white/5 p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-safa-gold/45 hover:bg-white/10 hover:shadow-[0_18px_36px_-24px_rgba(0,0,0,0.9)]">
+                <step.icon className="h-5 w-5 text-safa-gold transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:scale-110" />
                 <p className="mt-3 text-sm font-medium">{isAr ? step.ar : step.en}</p>
                 <p className="mt-1 font-display text-xs text-safa-cream/45">{String(i + 1).padStart(2, '0')}</p>
               </div>
-              {i < LIFECYCLE.length - 1 ? <span className="h-px w-6 bg-safa-gold/40" aria-hidden /> : null}
+              {i < LIFECYCLE.length - 1 ? (
+                <span className="flow-track h-px w-6 bg-safa-gold/30" aria-hidden>
+                  <span className="flow-dot" style={{ animationDelay: `${i * 0.28}s` }} />
+                </span>
+              ) : null}
             </div>
           ))}
-        </div>
+        </Reveal>
 
         <p className="mt-8 max-w-3xl text-sm leading-relaxed text-safa-cream/60">
           {L(

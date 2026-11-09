@@ -1,6 +1,7 @@
 import { STAGES } from '@/lib/platform';
 import { useLang } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import Reveal from '@/components/motion/Reveal';
 
 export default function HowItWorks({ compact = false }) {
   const { L, isAr } = useLang();
@@ -23,10 +24,11 @@ export default function HowItWorks({ compact = false }) {
 
         <div className={cn('mt-14 grid gap-4', compact ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4')}>
           {STAGES.map((s, i) => (
-            <div
+            <Reveal
               key={s.n}
+              delay={i * 70}
               className={cn(
-                'group relative overflow-hidden rounded-2xl border border-safa-line bg-white p-6 transition duration-500 hover:-translate-y-1 hover:border-safa-sand hover:shadow-xl',
+                'glow-card group relative overflow-hidden rounded-2xl border border-safa-line bg-white p-6',
                 !compact && i === 6 ? 'lg:col-span-2 lg:bg-safa-palm lg:text-safa-cream' : ''
               )}
             >
@@ -36,7 +38,7 @@ export default function HowItWorks({ compact = false }) {
                 </span>
                 <span
                   className={cn(
-                    'flex h-10 w-10 items-center justify-center rounded-xl border transition',
+                    'card-icon flex h-10 w-10 items-center justify-center rounded-xl border',
                     !compact && i === 6 ? 'border-white/20 bg-white/10 text-safa-cream' : 'border-safa-line bg-safa-mist text-safa-palm'
                   )}
                 >
@@ -49,7 +51,7 @@ export default function HowItWorks({ compact = false }) {
               <p className={cn('mt-2 text-sm leading-relaxed', !compact && i === 6 ? 'text-safa-cream/75' : 'text-safa-ink/65')}>
                 {isAr ? s.ar.body : s.en.body}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

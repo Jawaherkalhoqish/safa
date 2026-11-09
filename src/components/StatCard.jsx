@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import AnimatedNumber from '@/components/AnimatedNumber';
+import useReveal from '@/hooks/useReveal';
 import { useLang } from '@/lib/i18n';
 
 const TONES = {
@@ -9,14 +10,17 @@ const TONES = {
   danger: 'text-safa-dangerFg',
 };
 
-export default function StatCard({ label, value, decimals = 0, suffix, hint, icon: Icon, tone = 'palm', onClick, demo }) {
+export default function StatCard({ label, value, decimals = 0, suffix, hint, icon: Icon, tone = 'palm', onClick, demo, delay = 0 }) {
   const { lang } = useLang();
+  const revealRef = useReveal({ delay });
+
   return (
     <div
+      ref={revealRef}
       onClick={onClick}
       className={cn(
-        'panel palm-glow-hover group relative overflow-hidden p-5 transition duration-500',
-        onClick && 'cursor-pointer hover:border-safa-sand'
+        'panel glow-card reveal group relative overflow-hidden p-5',
+        onClick && 'cursor-pointer'
       )}
     >
       <span
@@ -25,7 +29,7 @@ export default function StatCard({ label, value, decimals = 0, suffix, hint, ico
       />
       <div className="relative flex items-start justify-between gap-3">
         {Icon ? (
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-safa-line bg-safa-mist text-safa-palm transition group-hover:border-safa-sand">
+          <span className="card-icon flex h-9 w-9 items-center justify-center rounded-xl border border-safa-line bg-safa-mist text-safa-palm">
             <Icon className="h-4 w-4" />
           </span>
         ) : <span />}

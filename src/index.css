@@ -50,6 +50,7 @@
     --safa-earth: 33 24% 44%;
     --safa-forest: 156 32% 17%;
     --safa-card: 0 0% 100%;
+    --glow-line: 86 18% 74%;
     --glow-a: 25 40 22;
     --glow-b: 200 161 90;
   }
@@ -90,6 +91,7 @@
     --safa-earth: 37 23% 64%;
     --safa-forest: 124 23% 88%;
     --safa-card: 146 25% 11%;
+    --glow-line: 124 16% 27%;
     --glow-a: 124 60 62;
     --glow-b: 200 161 90;
   }
@@ -235,4 +237,212 @@
   .dark .text-safa-cream\/80 { color: hsl(var(--safa-bone) / 0.8); }
   .dark .text-safa-cream\/85 { color: hsl(var(--safa-bone) / 0.85); }
   .dark .text-safa-cream\/90 { color: hsl(var(--safa-bone) / 0.9); }
+}
+
+/* ------------------------------------------------------------------
+   Premium motion, glow & micro-interaction layer
+   Palm-leaf emerald light, never neon. All of it honours reduced motion.
+------------------------------------------------------------------ */
+
+@keyframes sf-ken-burns {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.085) translate3d(1.2%, -1.4%, 0); }
+}
+@keyframes sf-breathe {
+  0%, 100% { opacity: 0.34; }
+  50% { opacity: 0.62; }
+}
+@keyframes sf-slide-across {
+  0% { left: 0; opacity: 0; }
+  14% { opacity: 1; }
+  86% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+@keyframes sf-slide-across-rtl {
+  0% { right: 0; opacity: 0; }
+  14% { opacity: 1; }
+  86% { opacity: 1; }
+  100% { right: 100%; opacity: 0; }
+}
+@keyframes sf-live-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(125, 139, 93, 0.55); }
+  70% { box-shadow: 0 0 0 7px rgba(125, 139, 93, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(125, 139, 93, 0); }
+}
+
+/* consistent 200–400ms feedback for every interactive element */
+a,
+button,
+[role="button"],
+[role="tab"],
+[role="option"],
+summary {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: 280ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* premium card: lift, emerald halo, soft light reflection, border highlight */
+.glow-card {
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(120% 100% at 50% 0%, rgba(125, 139, 93, 0.2), rgba(30, 58, 47, 0.05) 55%, transparent 78%);
+}
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-38%);
+  transition:
+    opacity 0.5s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(115deg, transparent 28%, rgba(255, 255, 255, 0.5) 46%, transparent 62%);
+}
+.glow-card:hover {
+  transform: translateY(-4px);
+  border-color: hsl(var(--glow-line));
+  box-shadow:
+    0 26px 46px -30px rgba(30, 58, 47, 0.5),
+    0 0 34px -20px rgba(125, 139, 93, 0.55);
+}
+.glow-card:hover::before { opacity: 1; }
+.glow-card:hover::after { opacity: 1; transform: translateX(38%); }
+
+.glow-card .card-icon {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s ease,
+    background-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+.glow-card:hover .card-icon {
+  transform: translateY(-2px) rotate(-3deg);
+  box-shadow: 0 10px 20px -14px rgba(30, 58, 47, 0.7);
+}
+
+.dark .glow-card::before {
+  background: radial-gradient(120% 100% at 50% 0%, rgba(124, 168, 120, 0.22), transparent 75%);
+}
+.dark .glow-card::after {
+  background: linear-gradient(115deg, transparent 28%, rgba(255, 255, 255, 0.07) 46%, transparent 62%);
+}
+.dark .glow-card:hover {
+  box-shadow:
+    0 26px 50px -30px rgba(0, 0, 0, 0.85),
+    0 0 36px -20px rgba(125, 139, 93, 0.5);
+}
+
+/* hero: slow ambient light over the photograph */
+.hero-media {
+  animation: sf-ken-burns 30s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.hero-emerald {
+  animation: sf-breathe 15s ease-in-out infinite;
+  background:
+    radial-gradient(56% 46% at 80% 16%, rgba(124, 168, 120, 0.26), transparent 70%),
+    radial-gradient(44% 42% at 10% 84%, rgba(200, 161, 90, 0.14), transparent 74%);
+}
+.cta-glow {
+  box-shadow:
+    0 14px 30px -16px rgba(251, 249, 242, 0.45),
+    0 0 30px -18px rgba(124, 168, 120, 0.55);
+}
+.cta-glow:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 20px 42px -16px rgba(251, 249, 242, 0.5),
+    0 0 48px -12px rgba(124, 168, 120, 0.7);
+}
+
+/* flowing process indicators */
+.flow-track {
+  position: relative;
+  display: block;
+}
+.flow-dot {
+  position: absolute;
+  top: 50%;
+  height: 5px;
+  width: 5px;
+  margin-top: -2.5px;
+  border-radius: 9999px;
+  background: #c8a15a;
+  box-shadow: 0 0 10px rgba(200, 161, 90, 0.9);
+  animation: sf-slide-across 3.6s linear infinite;
+}
+[dir="rtl"] .flow-dot {
+  animation-name: sf-slide-across-rtl;
+}
+
+/* gentle pulsating status indicator */
+.live-dot {
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-radius: 9999px;
+  background: #7d8b5d;
+  animation: sf-live-pulse 2.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-media,
+  .hero-emerald,
+  .flow-dot,
+  .live-dot,
+  .animate-rise,
+  .animate-drift,
+  .animate-ring-out,
+  .animate-soft-pulse,
+  .animate-slide-in,
+  .glow-card::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .glow-card:hover {
+    transform: none;
+  }
+  .cta-glow:hover {
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

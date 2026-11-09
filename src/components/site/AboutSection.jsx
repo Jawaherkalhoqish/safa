@@ -1,5 +1,6 @@
 import { Building2, Link2, PiggyBank, Sprout } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
+import Reveal from '@/components/motion/Reveal';
 
 const ACTORS = [
   {
@@ -56,19 +57,21 @@ export default function AboutSection() {
           </div>
 
           <div className="space-y-3">
-            {ACTORS.map((a) => (
-              <article
+            {ACTORS.map((a, i) => (
+              <Reveal
+                as="article"
                 key={a.en.title}
-                className="panel palm-glow-hover flex gap-4 p-5 md:p-6"
+                delay={i * 110}
+                className="panel glow-card flex gap-4 p-5 md:p-6"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-safa-line bg-safa-mist text-safa-palm">
+                <span className="card-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-safa-line bg-safa-mist text-safa-palm">
                   <a.icon className="h-5 w-5" />
                 </span>
                 <div>
                   <h3 className="text-sm font-semibold text-safa-palm">{isAr ? a.ar.title : a.en.title}</h3>
                   <p className="mt-1.5 text-[13px] leading-relaxed text-safa-ink/65">{isAr ? a.ar.body : a.en.body}</p>
                 </div>
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>

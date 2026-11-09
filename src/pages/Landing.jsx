@@ -6,6 +6,7 @@ import SiteFooter from '@/components/SiteFooter';
 import LandingHero from '@/components/LandingHero';
 import HowItWorks from '@/components/HowItWorks';
 import PlatformFlow from '@/components/PlatformFlow';
+import Reveal from '@/components/motion/Reveal';
 import LandingStory from '@/components/LandingStory';
 import AboutSection from '@/components/site/AboutSection';
 import EcosystemJourney from '@/components/site/EcosystemJourney';
@@ -41,12 +42,12 @@ export default function Landing() {
 
       <section className="border-b border-safa-line bg-white py-14">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-5 md:grid-cols-4 md:px-8">
-          {STATS.map((s) => (
-            <div key={s.en} className="text-start">
-              <s.icon className="h-5 w-5 text-safa-gold" />
+          {STATS.map((s, i) => (
+            <Reveal key={s.en} delay={i * 90} className="group text-start">
+              <s.icon className="h-5 w-5 text-safa-gold transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:scale-110" />
               <p className="display-num mt-3 text-3xl text-safa-palm md:text-4xl">{s.value}</p>
               <p className="mt-1 text-xs text-safa-ink/60">{L(s.ar, s.en)}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-7xl px-5 text-[11px] text-safa-ink/40 md:px-8">
@@ -65,7 +66,7 @@ export default function Landing() {
       <ContactSection />
 
       <section className="bg-safa-cream py-20 md:py-24">
-        <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
+        <Reveal className="mx-auto max-w-3xl px-5 text-center md:px-8">
           <p className="eyebrow">{L('ابدأ الآن', 'GET STARTED')}</p>
           <h2 className="mt-4 font-display text-3xl font-semibold text-safa-palm md:text-4xl">
             {L('اختر طريقتك لاستكشاف سعفة', 'Choose how you explore SA’FA')}
@@ -86,7 +87,7 @@ export default function Landing() {
           <p className="mt-4 text-[11px] text-safa-ink/45">
             {L('وضع تجريبي — لا يتطلب تسجيلًا حقيقيًا', 'Demo mode — no real account required')}
           </p>
-        </div>
+        </Reveal>
       </section>
 
       <SiteFooter />

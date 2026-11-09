@@ -1,6 +1,7 @@
 import { Leaf, ScrollText, Sparkles } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 import BrandLogo from '@/components/BrandLogo';
+import Reveal from '@/components/motion/Reveal';
 
 const PILLARS = [
   {
@@ -29,7 +30,7 @@ export default function PhilosophySection() {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div className="relative">
             <div className="absolute inset-6 -z-10 rounded-[40%] bg-safa-oliveSoft/15 blur-3xl" aria-hidden />
-            <div className="panel flex items-center justify-center p-10 md:p-14">
+            <div className="panel glow-card flex items-center justify-center p-10 md:p-14">
               <BrandLogo className="h-24 md:h-32" />
             </div>
           </div>
@@ -47,12 +48,12 @@ export default function PhilosophySection() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {PILLARS.map((p) => (
-                <div key={p.en.title} className="panel p-5">
-                  <p.icon className="h-5 w-5 text-safa-gold" />
+              {PILLARS.map((p, i) => (
+                <Reveal key={p.en.title} delay={i * 90} className="panel glow-card group p-5">
+                  <p.icon className="h-5 w-5 text-safa-gold transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:scale-110" />
                   <h3 className="mt-3 text-sm font-semibold text-safa-palm">{isAr ? p.ar.title : p.en.title}</h3>
                   <p className="mt-1.5 text-[12.5px] leading-relaxed text-safa-ink/65">{isAr ? p.ar.body : p.en.body}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
 

@@ -115,6 +115,10 @@ export default function Dashboard() {
         subtitle={L('نراقب نخيلك، ونحوّل مخلفاتها إلى قيمة.', 'We monitor your palms and turn their waste into value.')}
         actions={
           <>
+            <span className="inline-flex items-center gap-2 rounded-full border border-safa-line bg-white px-3 py-1.5 text-[10px] font-medium text-safa-earth">
+              <span className="live-dot" aria-hidden />
+              {L('مراقبة نشطة', 'Monitoring live')}
+            </span>
             {isVisitor ? <Badge variant="outline" className="rounded-full border-safa-sand bg-safa-sandSoft/60 text-[10px] text-safa-earth">{L('وضع تجريبي', 'Demo Mode')}</Badge> : null}
             <Select value={farm?.id || ''} onValueChange={setFarmId}>
               <SelectTrigger className="h-10 w-[220px] bg-white text-xs"><SelectValue /></SelectTrigger>
@@ -132,12 +136,12 @@ export default function Dashboard() {
       {!palms.length ? <StartFarmSteps /> : null}
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-        <StatCard label={L('إجمالي المخلفات', 'Total waste')} value={total} decimals={1} suffix={L(' طن', ' t')} icon={Boxes} demo />
-        <StatCard label={L('تم تدويره', 'Recycled')} value={recycled} decimals={1} suffix={L(' طن', ' t')} icon={Recycle} tone="olive" demo />
-        <StatCard label={L('تم جمعه', 'Collected')} value={collected} decimals={1} suffix={L(' طن', ' t')} icon={Truck} tone="olive" demo />
-        <StatCard label={L('تم توجيهه للمعالجة', 'Routed to processing')} value={processing} decimals={1} suffix={L(' طن', ' t')} icon={Gauge} demo />
-        <StatCard label={L('معرض للحرق / غير معالج', 'Burning / unprocessed')} value={risk} decimals={1} suffix={L(' طن', ' t')} icon={Flame} tone="danger" demo />
-        <StatCard label={L('القيمة المحتملة للمخلفات', 'Potential waste value')} value={value} suffix={L(' ر.س', ' SAR')} icon={Coins} tone="gold" demo />
+        <StatCard label={L('إجمالي المخلفات', 'Total waste')} value={total} decimals={1} suffix={L(' طن', ' t')} icon={Boxes} demo delay={0} />
+        <StatCard label={L('تم تدويره', 'Recycled')} value={recycled} decimals={1} suffix={L(' طن', ' t')} icon={Recycle} tone="olive" demo delay={70} />
+        <StatCard label={L('تم جمعه', 'Collected')} value={collected} decimals={1} suffix={L(' طن', ' t')} icon={Truck} tone="olive" demo delay={140} />
+        <StatCard label={L('تم توجيهه للمعالجة', 'Routed to processing')} value={processing} decimals={1} suffix={L(' طن', ' t')} icon={Gauge} demo delay={210} />
+        <StatCard label={L('معرض للحرق / غير معالج', 'Burning / unprocessed')} value={risk} decimals={1} suffix={L(' طن', ' t')} icon={Flame} tone="danger" demo delay={280} />
+        <StatCard label={L('القيمة المحتملة للمخلفات', 'Potential waste value')} value={value} suffix={L(' ر.س', ' SAR')} icon={Coins} tone="gold" demo delay={350} />
       </div>
 
       <div className="grid gap-5 xl:grid-cols-[1.35fr_1fr]">
@@ -147,7 +151,7 @@ export default function Dashboard() {
           icon={Boxes}
           action={<DemoTag />}
         >
-          <WasteCharts byType={typeRows} byStatus={statusRows} onSelect={(s) => setPathway(s.key)} />
+          <WasteCharts key={farm.id} byType={typeRows} byStatus={statusRows} onSelect={(s) => setPathway(s.key)} />
           {selectedPathway ? (
             <div className="mt-4 rounded-2xl border border-safa-line bg-safa-cream/70 p-4">
               <p className="text-xs font-semibold text-safa-palm">
@@ -237,7 +241,7 @@ export default function Dashboard() {
               <button
                 key={c.key}
                 onClick={() => setPathway(pathway === c.key ? null : c.key)}
-                className={`rounded-2xl border p-4 text-start transition ${pathway === c.key ? 'border-safa-palm bg-safa-palm text-safa-cream' : 'border-safa-line bg-white hover:border-safa-sand'}`}
+                className={`rounded-2xl border p-4 text-start transition duration-300 hover:-translate-y-0.5 ${pathway === c.key ? 'border-safa-palm bg-safa-palm text-safa-cream shadow-[0_16px_30px_-24px_rgba(30,58,47,0.8)]' : 'border-safa-line bg-white hover:border-safa-sand hover:shadow-[0_16px_30px_-26px_rgba(30,58,47,0.7)]'}`}
               >
                 <p className={`display-num text-2xl ${pathway === c.key ? 'text-safa-gold' : 'text-safa-palm'}`}>{num(c.tons, 1)}</p>
                 <p className="mt-1 text-[10px] opacity-60">{L('طن', 'tons')}</p>

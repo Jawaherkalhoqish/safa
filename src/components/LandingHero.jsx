@@ -17,9 +17,10 @@ export default function LandingHero() {
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-safa-palmDeep">
-      <Image src={ASSETS.hero} alt={L('واحة نخيل الأحساء عند الشروق', 'Al-Ahsa palm oasis at sunrise')} fittingType="fill" className="absolute inset-0 h-full w-full" />
+      <Image src={ASSETS.hero} alt={L('واحة نخيل الأحساء عند الشروق', 'Al-Ahsa palm oasis at sunrise')} fittingType="fill" className="hero-media absolute inset-0 h-full w-full" />
       <div className="absolute inset-0 bg-gradient-to-t from-safa-palmDeep via-safa-palmDeep/70 to-safa-palmDeep/30" />
       <div className="absolute inset-0 bg-gradient-to-e from-safa-palmDeep/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 hero-emerald" aria-hidden />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-32 md:px-8 md:pb-28 md:pt-40">
         <div className="max-w-3xl">
@@ -28,7 +29,10 @@ export default function LandingHero() {
             <span className="font-display text-lg font-semibold tracking-[0.18em] text-safa-cream/80 md:text-xl">SA’FA</span>
           </div>
 
-          <h1 className="animate-rise mt-8 max-w-2xl font-display text-3xl font-semibold leading-[1.25] text-safa-cream md:text-5xl md:leading-[1.2]">
+          <h1
+            className="animate-rise mt-8 max-w-2xl font-display text-3xl font-semibold leading-[1.25] text-safa-cream md:text-5xl md:leading-[1.2]"
+            style={{ animationDelay: '120ms' }}
+          >
             {L(
               'من إرث الأحساء، نبني منظومة زراعية مستدامة.',
               'From Al-Ahsa’s Heritage, We Build a Sustainable Agricultural Ecosystem.'
@@ -41,17 +45,17 @@ export default function LandingHero() {
             )}
           </p>
 
-          <p className="animate-rise mt-6 max-w-2xl text-base leading-relaxed text-safa-cream/85 md:text-lg">
+          <p className="animate-rise mt-6 max-w-2xl text-base leading-relaxed text-safa-cream/85 md:text-lg" style={{ animationDelay: '230ms' }}>
             {L(
               'منصة زراعية رقمية متكاملة تجمع المزارعين والمنشآت والمستثمرين في منظومة واحدة.',
               'An integrated agricultural digital ecosystem connecting farmers, companies, and investors.'
             )}
           </p>
 
-          <div className="animate-rise mt-9 flex flex-wrap items-center gap-3">
+          <div className="animate-rise mt-9 flex flex-wrap items-center gap-3" style={{ animationDelay: '330ms' }}>
             <Link
               to="/access"
-              className="group inline-flex items-center gap-2 rounded-full bg-safa-bone px-6 py-3.5 text-sm font-semibold text-safa-palmDeep shadow-lg shadow-black/20 transition hover:bg-white"
+              className="cta-glow group inline-flex items-center gap-2 rounded-full bg-safa-bone px-6 py-3.5 text-sm font-semibold text-safa-palmDeep shadow-lg shadow-black/20 transition hover:bg-white"
             >
               {L('اكتشف سعفة', 'Discover SA’FA')}
               <Arrow className="h-4 w-4 transition group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
@@ -65,8 +69,12 @@ export default function LandingHero() {
           </div>
 
           <div className="mt-12 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
-            {chips.map((c) => (
-              <div key={c.en} className="glass animate-rise px-4 py-3">
+            {chips.map((c, i) => (
+              <div
+                key={c.en}
+                className="glass animate-rise px-4 py-3 transition duration-500 hover:-translate-y-0.5 hover:bg-white/15"
+                style={{ animationDelay: `${430 + i * 90}ms` }}
+              >
                 <c.icon className="h-4 w-4 text-safa-gold" />
                 <p className="mt-2 text-[11px] text-safa-cream/70">{L(c.ar, c.en)}</p>
                 <p className="font-display text-lg font-semibold text-safa-cream">{c.value}</p>

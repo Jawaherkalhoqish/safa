@@ -121,10 +121,12 @@ export default function EcosystemJourney() {
         <div className="relative mt-8">
           <div className="absolute inset-x-0 top-6 hidden h-px bg-safa-line lg:block" aria-hidden />
           <div
-            className="absolute top-6 hidden h-px bg-gradient-to-r from-safa-oliveSoft to-safa-gold transition-all duration-700 lg:block"
+            className="absolute top-6 hidden h-px bg-gradient-to-r from-safa-oliveSoft to-safa-gold transition-all duration-700 ease-out lg:block"
             style={{ width: `${((active + 1) / STEPS.length) * 100}%` }}
             aria-hidden
-          />
+          >
+            <span className="flow-dot" />
+          </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8 lg:gap-2">
             {STEPS.map((s, i) => {
               const Icon = s.icon;
@@ -138,7 +140,7 @@ export default function EcosystemJourney() {
                     setActive(i);
                     setAuto(false);
                   }}
-                  className="group flex flex-col items-center gap-2 text-center"
+                  className="group flex flex-col items-center gap-2 text-center transition-transform duration-300 hover:-translate-y-0.5"
                   aria-pressed={isActive}
                 >
                   <span
@@ -148,7 +150,7 @@ export default function EcosystemJourney() {
                         ? 'border-safa-gold/70 bg-safa-palm text-safa-bone ring-glow'
                         : isDone
                           ? 'border-safa-oliveSoft/40 bg-safa-okBg text-safa-okFg'
-                          : 'border-safa-line bg-white text-safa-ink/50 group-hover:border-safa-sand'
+                          : 'border-safa-line bg-white text-safa-ink/50 group-hover:border-safa-sand group-hover:text-safa-palm group-hover:shadow-[0_10px_22px_-16px_rgba(30,58,47,0.6)]'
                     )}
                   >
                     <Icon className="h-5 w-5" />

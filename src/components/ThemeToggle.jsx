@@ -20,7 +20,7 @@ export default function ThemeToggle({ tone = 'onLight', className }) {
       aria-label={L('تبديل الوضع الفاتح والداكن', 'Toggle light and dark mode')}
       title={isDark ? L('الوضع الفاتح', 'Light mode') : L('الوضع الداكن', 'Dark mode')}
       className={cn(
-        'relative flex h-8 w-[62px] shrink-0 items-center rounded-full border transition-colors duration-300',
+        'group relative flex h-8 w-[62px] shrink-0 items-center rounded-full border transition-colors duration-300',
         onDark ? 'border-white/25 bg-white/10 hover:bg-white/15' : 'border-safa-line bg-safa-mist hover:border-safa-sand',
         className
       )}
@@ -32,7 +32,11 @@ export default function ThemeToggle({ tone = 'onLight', className }) {
         )}
         style={{ transform: `translateX(${shift}px)` }}
       >
-        {isDark ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
+        {isDark ? (
+          <Moon className="h-3.5 w-3.5 transition-transform duration-500 group-hover:-rotate-12" />
+        ) : (
+          <Sun className="h-3.5 w-3.5 transition-transform duration-500 group-hover:rotate-45" />
+        )}
       </span>
       <span className={cn('mx-2 flex flex-1 items-center justify-between', onDark ? 'text-safa-bone/40' : 'text-safa-earth/60')}>
         <Sun className={cn('h-3 w-3 transition-opacity', isDark ? 'opacity-100' : 'opacity-0')} />

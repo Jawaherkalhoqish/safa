@@ -4,6 +4,7 @@ import { useLang } from '@/lib/i18n';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import Reveal from '@/components/motion/Reveal';
 
 const GROUPS = [
   {
@@ -159,11 +160,13 @@ export default function PricingSection() {
             </div>
 
             <div className="mt-6 grid gap-4 lg:grid-cols-3">
-              {group.plans.map((p) => (
-                <article
+              {group.plans.map((p, i) => (
+                <Reveal
+                  as="article"
                   key={p.name}
+                  delay={i * 90}
                   className={cn(
-                    'panel palm-glow-hover relative flex flex-col p-6',
+                    'panel glow-card relative flex flex-col p-6',
                     p.featured && 'border-safa-gold/60 ring-glow'
                   )}
                 >
@@ -198,7 +201,7 @@ export default function PricingSection() {
                   >
                     {L('اشترك تجريبيًا', 'Start demo subscription')}
                   </Button>
-                </article>
+                </Reveal>
               ))}
             </div>
 

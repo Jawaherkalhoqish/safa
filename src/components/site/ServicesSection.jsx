@@ -10,6 +10,7 @@ import {
   Truck,
 } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
+import Reveal from '@/components/motion/Reveal';
 
 const SERVICES = [
   {
@@ -79,14 +80,19 @@ export default function ServicesSection() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
-            <article key={s.en.title} className="panel palm-glow-hover group p-6">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-safa-line bg-safa-mist text-safa-palm transition group-hover:border-safa-sand group-hover:bg-safa-sand/20">
+          {SERVICES.map((s, i) => (
+            <Reveal
+              as="article"
+              key={s.en.title}
+              delay={(i % 3) * 80}
+              className="panel glow-card group p-6"
+            >
+              <span className="card-icon flex h-11 w-11 items-center justify-center rounded-xl border border-safa-line bg-safa-mist text-safa-palm">
                 <s.icon className="h-5 w-5" />
               </span>
               <h3 className="mt-5 text-base font-semibold text-safa-palm">{isAr ? s.ar.title : s.en.title}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-safa-ink/65">{isAr ? s.ar.body : s.en.body}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
