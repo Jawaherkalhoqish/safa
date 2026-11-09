@@ -56,8 +56,8 @@ export default function Legal() {
 
       <p className="text-[10px] text-safa-ink/40">
         {L(
-          'SA’FA | سعفة — من نخل الأحساء.. لمستقبلها. نموذج أولي في بيئة عرض.',
-          'SA’FA — From Al-Ahsa’s Palms… to Their Future. Prototype in a demo environment.'
+          'SA’FA | سعفة — من إرث الأحساء، نبني منظومة زراعية مستدامة. نموذج أولي في بيئة عرض.',
+          'SA’FA — From Al-Ahsa’s Heritage, We Build a Sustainable Agricultural Ecosystem. Prototype in a demo environment.'
         )}
       </p>
     </div>

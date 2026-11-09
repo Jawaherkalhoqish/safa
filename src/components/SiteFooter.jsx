@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLang } from '@/lib/i18n';
-import { ASSETS } from '@/lib/assets';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function SiteFooter() {
   const { L } = useLang();
@@ -38,10 +38,10 @@ export default function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
             <div className="flex items-center gap-3">
-              <img src={ASSETS.logo} alt="SA’FA" className="h-12 w-12 rounded-xl object-cover ring-1 ring-white/20" />
+              <BrandLogo tone="onDark" className="h-10" />
               <div>
-                <p className="font-display text-xl font-semibold">SA’FA | سعفة</p>
-                <p className="text-[11px] tracking-[0.2em] text-safa-sand">{L('من نخل الأحساء.. لمستقبلها', 'FROM AL-AHSA’S PALMS… TO THEIR FUTURE')}</p>
+                <p className="font-display text-base font-semibold tracking-[0.16em]">SA’FA</p>
+                <p className="text-[11px] tracking-[0.2em] text-safa-sand">{L('من إرث الأحساء، نبني منظومة زراعية مستدامة.', 'FROM AL-AHSA’S HERITAGE, WE BUILD A SUSTAINABLE AGRICULTURAL ECOSYSTEM.')}</p>
               </div>
             </div>
             <p className="mt-5 max-w-sm text-xs leading-relaxed text-safa-cream/55">

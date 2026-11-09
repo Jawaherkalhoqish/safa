@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ChevronDown, Radio, ShieldAlert, Recycle } from 
 import { Image } from '@/components/ui/image';
 import { useLang } from '@/lib/i18n';
 import { ASSETS } from '@/lib/assets';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function LandingHero() {
   const { L, isAr } = useLang();
@@ -22,31 +23,28 @@ export default function LandingHero() {
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-32 md:px-8 md:pb-28 md:pt-40">
         <div className="max-w-3xl">
-          <div className="animate-rise flex items-center gap-3">
-            <img src={ASSETS.logo} alt="SA’FA" className="h-14 w-14 rounded-2xl object-cover ring-1 ring-white/25 md:h-16 md:w-16" />
-            <div className="text-start">
-              <p className="font-display text-2xl font-semibold text-safa-cream md:text-3xl">SA’FA</p>
-              <p className="text-xs tracking-[0.35em] text-safa-sand">سعفة</p>
-            </div>
+          <div className="animate-rise flex flex-wrap items-center gap-4">
+            <BrandLogo tone="onDark" className="h-12 md:h-14" />
+            <span className="font-display text-lg font-semibold tracking-[0.18em] text-safa-cream/80 md:text-xl">SA’FA</span>
           </div>
 
-          <h1 className="animate-rise mt-8 font-display text-4xl font-semibold leading-[1.15] text-safa-cream md:text-6xl">
-            {L('من نخل الأحساء.. لمستقبلها', 'From Al-Ahsa’s Palms… to Their Future')}
+          <h1 className="animate-rise mt-8 max-w-2xl font-display text-3xl font-semibold leading-[1.25] text-safa-cream md:text-5xl md:leading-[1.2]">
+            {L(
+              'من إرث الأحساء، نبني منظومة زراعية مستدامة.',
+              'From Al-Ahsa’s Heritage, We Build a Sustainable Agricultural Ecosystem.'
+            )}
           </h1>
           <p className="mt-4 text-sm text-safa-sand md:text-base">
-            {L('From Al-Ahsa’s Palms… to Their Future', 'من نخل الأحساء.. لمستقبلها')}
+            {L(
+              'From Al-Ahsa’s Heritage, We Build a Sustainable Agricultural Ecosystem.',
+              'من إرث الأحساء، نبني منظومة زراعية مستدامة.'
+            )}
           </p>
 
           <p className="animate-rise mt-6 max-w-2xl text-base leading-relaxed text-safa-cream/85 md:text-lg">
             {L(
-              'نستشعر حالة النخلة، نكتشف المؤشرات مبكرًا، ونتنبأ بمصير مخلفاتها.',
-              'We sense the palm, identify early warning signals, and predict the future of its waste.'
-            )}
-          </p>
-          <p className="mt-3 max-w-2xl text-sm text-safa-cream/65">
-            {L(
-              'منصة ذكية لصحة النخيل، الإنذار المبكر، إدارة المخلفات والاقتصاد الدائري.',
-              'An intelligent platform for palm health, early warning, waste management and the circular economy.'
+              'منصة زراعية رقمية متكاملة تجمع المزارعين والمنشآت والمستثمرين في منظومة واحدة.',
+              'An integrated agricultural digital ecosystem connecting farmers, companies, and investors.'
             )}
           </p>
 
@@ -55,14 +53,14 @@ export default function LandingHero() {
               to="/access"
               className="group inline-flex items-center gap-2 rounded-full bg-safa-cream px-6 py-3.5 text-sm font-semibold text-safa-palm shadow-lg shadow-black/20 transition hover:bg-white"
             >
-              {L('ابدأ مع سعفة', 'Explore SA’FA')}
+              {L('اكتشف سعفة', 'Discover SA’FA')}
               <Arrow className="h-4 w-4 transition group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
             </Link>
             <a
               href="#how"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-safa-cream transition hover:bg-white/10"
             >
-              {L('كيف تعمل سعفة؟', 'How SA’FA Works')}
+              {L('استكشف خدماتنا', 'Explore Our Services')}
             </a>
           </div>
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Bell, Globe, Menu, Search, ShoppingBag, Sprout } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 import { useCount } from '@/lib/data';
-import { ASSETS } from '@/lib/assets';
+import BrandLogo from '@/components/BrandLogo';
 import { ROLE } from '@/lib/format';
 import GlobalSearch from '@/components/GlobalSearch';
 import { useCart } from '@/components/CartProvider';
@@ -23,7 +23,7 @@ export default function AppTopBar({ role, onOpenNav }) {
         </button>
 
         <Link to="/dashboard" className="flex items-center gap-2 lg:hidden">
-          <img src={ASSETS.logo} alt="SA’FA" className="h-8 w-8 rounded-lg object-cover" />
+          <BrandLogo tone="onLight" className="h-7" />
           <span className="font-display text-sm font-semibold text-safa-palm">SA’FA</span>
         </Link>
 

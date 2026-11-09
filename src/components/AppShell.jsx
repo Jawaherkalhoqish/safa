@@ -86,7 +86,7 @@ function AppFooterNote({ role }) {
   return (
     <footer className="border-t border-safa-line px-4 pb-28 pt-5 text-[10px] text-safa-ink/40 md:px-6 lg:pb-8">
       <p>
-        SA’FA | سعفة — {L('من نخل الأحساء.. لمستقبلها', 'From Al-Ahsa’s Palms… to Their Future')} ·{' '}
+        SA’FA | سعفة — {L('من إرث الأحساء، نبني منظومة زراعية مستدامة.', 'From Al-Ahsa’s Heritage, We Build a Sustainable Agricultural Ecosystem.')} ·{' '}
         {L('نسخة تجريبية | بيئة عرض', 'Prototype | Demo Environment')} · {isAr ? ROLE[role]?.ar : ROLE[role]?.en}
       </p>
     </footer>

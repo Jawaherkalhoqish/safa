@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Globe, Menu, X } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
-import { ASSETS } from '@/lib/assets';
+import BrandLogo from '@/components/BrandLogo';
 import { cn } from '@/lib/utils';
 
 export default function SiteHeader({ solid = false }) {
@@ -33,11 +33,8 @@ export default function SiteHeader({ solid = false }) {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 md:h-20 md:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={ASSETS.logo} alt="SA’FA" className="h-10 w-10 rounded-xl object-cover ring-1 ring-white/25 md:h-11 md:w-11" />
-          <span className="leading-tight">
-            <span className="block font-display text-lg font-semibold text-safa-cream md:text-xl">SA’FA</span>
-            <span className="block text-[10px] tracking-[0.3em] text-safa-sand">{isAr ? 'سعفة' : 'SA’FA | سعفة'}</span>
-          </span>
+          <BrandLogo tone="onDark" className="h-9 md:h-10" />
+          <span className="font-display text-sm font-semibold tracking-[0.16em] text-safa-cream/85">SA’FA</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -61,7 +58,7 @@ export default function SiteHeader({ solid = false }) {
             to="/access"
             className="hidden rounded-full bg-safa-cream px-4 py-2 text-xs font-semibold text-safa-palm transition hover:bg-white sm:block"
           >
-            {L('ابدأ مع سعفة', 'Explore SA’FA')}
+            {L('اكتشف سعفة', 'Discover SA’FA')}
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -82,7 +79,7 @@ export default function SiteHeader({ solid = false }) {
               </a>
             ))}
             <Link to="/access" onClick={() => setOpen(false)} className="mt-1 rounded-full bg-safa-cream px-4 py-2 text-center text-sm font-semibold text-safa-palm">
-              {L('ابدأ مع سعفة', 'Explore SA’FA')}
+              {L('اكتشف سعفة', 'Discover SA’FA')}
             </Link>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { BadgeCheck, BarChart3, Bell, Boxes, Building2, Factory, FileText, Layou
 import { NavLink } from 'react-router-dom';
 import { useLang } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
-import { ASSETS } from '@/lib/assets';
+import BrandLogo from '@/components/BrandLogo';
 import { ROLE } from '@/lib/format';
 
 const GROUPS = [
@@ -47,11 +47,8 @@ export default function SideNav({ role }) {
   return (
     <aside className="fixed inset-y-0 start-0 z-40 hidden w-[248px] flex-col border-e border-white/10 bg-safa-palmDeep text-safa-cream lg:flex xl:w-[268px]">
       <div className="flex items-center gap-3 px-5 py-5">
-        <img src={ASSETS.logo} alt="SA’FA" className="h-11 w-11 rounded-xl object-cover ring-1 ring-white/20" />
-        <div>
-          <p className="font-display text-lg font-semibold leading-none">SA’FA</p>
-          <p className="mt-1 text-[10px] tracking-[0.28em] text-safa-sand">سعفة</p>
-        </div>
+        <BrandLogo tone="onDark" className="h-8" />
+        <p className="font-display text-sm font-semibold tracking-[0.16em] text-safa-cream/85">SA’FA</p>
       </div>
 
       <div className="mx-4 mb-4 rounded-2xl border border-white/10 bg-white/5 px-3 py-2.5">

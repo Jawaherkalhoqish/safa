@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Building2, Factory, Globe, Leaf, LogIn, Sprout, UserRound } from 'lucide-react';
 import { ASSETS } from '@/lib/assets';
+import BrandLogo from '@/components/BrandLogo';
 import { useLang } from '@/lib/i18n';
 import { ROLES, setRole } from '@/lib/session';
 import { ROLE } from '@/lib/format';
@@ -44,11 +45,8 @@ export default function Access() {
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-5 py-10 md:px-8">
         <div className="flex items-center justify-between">
           <button onClick={() => navigate('/')} className="flex items-center gap-3">
-            <img src={ASSETS.logo} alt="SA’FA" className="h-11 w-11 rounded-xl object-cover ring-1 ring-white/20" />
-            <span className="text-start">
-              <span className="block font-display text-lg font-semibold text-safa-cream">SA’FA</span>
-              <span className="block text-[10px] tracking-[0.3em] text-safa-sand">سعفة</span>
-            </span>
+            <BrandLogo tone="onDark" className="h-9" />
+            <span className="font-display text-sm font-semibold tracking-[0.16em] text-safa-cream/85">SA’FA</span>
           </button>
           <button onClick={toggle} className="flex items-center gap-1.5 rounded-full border border-white/20 px-3 py-1.5 text-xs text-safa-cream/90 transition hover:bg-white/10">
             <Globe className="h-3.5 w-3.5" />
@@ -58,9 +56,9 @@ export default function Access() {
 
         <div className="mt-14 max-w-2xl">
           <p className="eyebrow text-safa-gold">{L('الدخول إلى المنصة', 'PLATFORM ACCESS')}</p>
-          <h1 className="mt-4 font-display text-4xl font-semibold text-safa-cream md:text-5xl">{L('مرحبًا بك في سعفة', 'Welcome to SA’FA')}</h1>
+          <h1 className="mt-4 font-display text-3xl font-semibold leading-tight text-safa-cream md:text-5xl">{L('اكتشف سعفة من منظورك', 'Explore SA’FA from Your Perspective')}</h1>
           <p className="mt-4 text-sm leading-relaxed text-safa-cream/70 md:text-base">
-            {L('اختر طريقة الدخول لاستكشاف المنصة', 'Choose how you enter to explore the platform')}
+            {L('اختر دورك للدخول كزائر واستكشاف المنظومة دون تسجيل', 'Pick your role, enter as a guest and explore the ecosystem without signing up')}
           </p>
         </div>
 

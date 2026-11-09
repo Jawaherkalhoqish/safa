@@ -13,6 +13,7 @@ import { useLang } from '@/lib/i18n';
 import { PATHWAYS } from '@/lib/platform';
 import { HEALTH_BAND, ORDER_STATUS, WASTE_STATUS, WASTE_TYPE, daysLeft, money, num, rpwLevel, RPW_LEVEL } from '@/lib/format';
 import { ASSETS } from '@/lib/assets';
+import BrandLogo from '@/components/BrandLogo';
 import { cn } from '@/lib/utils';
 
 const STEPS = [
@@ -70,7 +71,7 @@ export default function Tour() {
         <img src={ASSETS.hero} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-t from-safa-palmDeep via-safa-palmDeep/85 to-safa-palmDeep/60" />
         <div className="relative mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6 py-20 text-center">
-          <img src={ASSETS.logo} alt="SA’FA" className="mx-auto h-20 w-20 rounded-2xl object-cover ring-1 ring-white/20" />
+          <BrandLogo tone="onDark" className="mx-auto h-16" />
           <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.25em] text-safa-gold">{L('الوضع التعريفي', 'PRESENTATION MODE')}</p>
           <h1 className="mt-4 font-display text-4xl font-semibold text-safa-cream md:text-5xl">
             {L('التجربة الكاملة لسعفة في دقيقتين', 'The full SA’FA story in two minutes')}
@@ -100,7 +101,7 @@ export default function Tour() {
     <div className="min-h-screen bg-safa-cream">
       <header className="sticky top-0 z-30 border-b border-safa-line bg-safa-cream/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-3 px-5 py-4">
-          <img src={ASSETS.logo} alt="SA’FA" className="h-9 w-9 rounded-lg object-cover" />
+          <BrandLogo tone="onDark" className="h-8" />
           <div className="flex-1">
             <p className="text-[11px] font-semibold text-safa-palm">
               {L('الجولة التعريفية', 'Guided tour')} · {step + 1}/{STEPS.length}
