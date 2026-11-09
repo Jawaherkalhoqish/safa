@@ -51,7 +51,7 @@ export default function LandingHero() {
           <div className="animate-rise mt-9 flex flex-wrap items-center gap-3">
             <Link
               to="/access"
-              className="group inline-flex items-center gap-2 rounded-full bg-safa-cream px-6 py-3.5 text-sm font-semibold text-safa-palm shadow-lg shadow-black/20 transition hover:bg-white"
+              className="group inline-flex items-center gap-2 rounded-full bg-safa-bone px-6 py-3.5 text-sm font-semibold text-safa-palmDeep shadow-lg shadow-black/20 transition hover:bg-white"
             >
               {L('اكتشف سعفة', 'Discover SA’FA')}
               <Arrow className="h-4 w-4 transition group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />

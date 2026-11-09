@@ -83,7 +83,7 @@ export default function Tour() {
             )}
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Button onClick={() => setStarted(true)} className="bg-safa-cream px-7 py-3.5 text-sm font-semibold text-safa-palm hover:bg-white">
+            <Button onClick={() => setStarted(true)} className="bg-safa-bone px-7 py-3.5 text-sm font-semibold text-safa-palmDeep hover:bg-white">
               {L('ابدأ الجولة', 'Start the tour')}
               <Arrow className="ms-2 h-4 w-4" />
             </Button>

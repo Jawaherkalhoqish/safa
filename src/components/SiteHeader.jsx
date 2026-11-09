@@ -83,7 +83,7 @@ export default function SiteHeader({ solid = false }) {
           </button>
           <Link
             to="/access"
-            className="hidden rounded-full bg-safa-bone px-4 py-2 text-xs font-semibold text-safa-palm transition hover:bg-white sm:block"
+            className="hidden rounded-full bg-safa-bone px-4 py-2 text-xs font-semibold text-safa-palmDeep transition hover:bg-white sm:block"
           >
             {L('اكتشف سعفة', 'Explore SA’FA')}
           </Link>
@@ -120,7 +120,7 @@ export default function SiteHeader({ solid = false }) {
             <Link
               to="/access"
               onClick={() => setOpen(false)}
-              className="mt-3 rounded-full bg-safa-bone px-4 py-2.5 text-center text-sm font-semibold text-safa-palm"
+              className="mt-3 rounded-full bg-safa-bone px-4 py-2.5 text-center text-sm font-semibold text-safa-palmDeep"
             >
               {L('اكتشف سعفة', 'Explore SA’FA')}
             </Link>

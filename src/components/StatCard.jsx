@@ -15,11 +15,15 @@ export default function StatCard({ label, value, decimals = 0, suffix, hint, ico
     <div
       onClick={onClick}
       className={cn(
-        'panel group relative p-5 transition duration-500',
-        onClick && 'cursor-pointer hover:-translate-y-1 hover:border-safa-sand hover:shadow-lg'
+        'panel palm-glow-hover group relative overflow-hidden p-5 transition duration-500',
+        onClick && 'cursor-pointer hover:border-safa-sand'
       )}
     >
-      <div className="flex items-start justify-between gap-3">
+      <span
+        className="pointer-events-none absolute -end-10 -top-12 h-28 w-28 rounded-full bg-safa-oliveSoft/12 blur-2xl transition duration-500 group-hover:bg-safa-oliveSoft/25"
+        aria-hidden
+      />
+      <div className="relative flex items-start justify-between gap-3">
         {Icon ? (
           <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-safa-line bg-safa-mist text-safa-palm transition group-hover:border-safa-sand">
             <Icon className="h-4 w-4" />

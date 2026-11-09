@@ -15,7 +15,7 @@ const Donut = ({ title, data, onSelect, unit }) => {
                 <Cell key={d.key} fill={d.color} stroke="white" strokeWidth={1.5} className="cursor-pointer outline-none" />
               ))}
             </Pie>
-            <Tooltip formatter={(v, n) => [`${num(v, 1)} ${unit}`, n]} contentStyle={{ borderRadius: 12, border: '1px solid #E3DDCD', fontSize: 11 }} />
+            <Tooltip formatter={(v, n) => [`${num(v, 1)} ${unit}`, n]} contentStyle={{ borderRadius: 12, border: '1px solid hsl(var(--safa-line))', backgroundColor: 'hsl(var(--safa-card))', color: 'hsl(var(--safa-ink))', fontSize: 11 }} />
           </PieChart>
         </ResponsiveContainer>
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">

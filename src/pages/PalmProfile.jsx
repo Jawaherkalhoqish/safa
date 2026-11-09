@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MapPin, ScanLine } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
 import PalmDetail from '@/components/PalmDetail';
 import StatusBadge from '@/components/StatusBadge';
@@ -60,6 +60,15 @@ export default function PalmProfile() {
             <StatusBadge tone={risk.tone} label={`${L('خطر السوسة', 'RPW risk')} ${num(palm.rpw_risk, 2)}`} />
             <DemoTag />
           </span>
+        }
+        actions={
+          <Link
+            to={`/analysis?palm=${palm.id}`}
+            className="inline-flex items-center gap-2 rounded-full bg-safa-palm px-4 py-2 text-[12px] font-semibold text-safa-bone transition hover:bg-safa-palmMid"
+          >
+            <ScanLine className="h-3.5 w-3.5" />
+            {L('تحليل صورة النخلة', 'Analyse a photo')}
+          </Link>
         }
       />
 

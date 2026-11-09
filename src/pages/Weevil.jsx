@@ -66,10 +66,10 @@ export default function Weevil() {
           <div className="h-64" style={{ direction: 'ltr' }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={trend}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E3DDCD" vertical={false} />
-                <XAxis dataKey="band" tick={{ fontSize: 11, fill: '#8B7355' }} />
-                <YAxis tick={{ fontSize: 11, fill: '#8B7355' }} width={30} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #E3DDCD', fontSize: 11 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--safa-line))" vertical={false} />
+                <XAxis dataKey="band" tick={{ fontSize: 11, fill: 'hsl(var(--safa-earth))' }} />
+                <YAxis tick={{ fontSize: 11, fill: 'hsl(var(--safa-earth))' }} width={30} />
+                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid hsl(var(--safa-line))', backgroundColor: 'hsl(var(--safa-card))', color: 'hsl(var(--safa-ink))', fontSize: 11 }} />
                 <Bar dataKey="count" radius={[8, 8, 0, 0]} name={L('عدد النخيل', 'Palms')}>
                   {trend.map((t) => (
                     <Cell key={t.band} fill={t.color} />

@@ -52,11 +52,11 @@ export default function HealthCharts({ readings = [] }) {
           <div className="mt-3 h-56" style={{ direction: 'ltr' }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E3DDCD" vertical={false} />
-                <XAxis dataKey="t" tick={{ fontSize: 10, fill: '#8B7355' }} minTickGap={24} />
-                <YAxis tick={{ fontSize: 10, fill: '#8B7355' }} domain={[0, 1]} width={28} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #E3DDCD', fontSize: 11 }} />
-                <Line type="monotone" dataKey="electrical" stroke="#1E3A2F" strokeWidth={2} dot={false} name={L('كهربائي', 'Electrical')} />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--safa-line))" vertical={false} />
+                <XAxis dataKey="t" tick={{ fontSize: 10, fill: 'hsl(var(--safa-earth))' }} minTickGap={24} />
+                <YAxis tick={{ fontSize: 10, fill: 'hsl(var(--safa-earth))' }} domain={[0, 1]} width={28} />
+                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid hsl(var(--safa-line))', backgroundColor: 'hsl(var(--safa-card))', color: 'hsl(var(--safa-ink))', fontSize: 11 }} />
+                <Line type="monotone" dataKey="electrical" stroke="hsl(var(--safa-forest))" strokeWidth={2} dot={false} name={L('كهربائي', 'Electrical')} />
                 <Line type="monotone" dataKey="acoustic" stroke="#C8A15A" strokeWidth={2} dot={false} name={L('صوتي', 'Acoustic')} />
               </LineChart>
             </ResponsiveContainer>
@@ -70,15 +70,15 @@ export default function HealthCharts({ readings = [] }) {
               <AreaChart data={data}>
                 <defs>
                   <linearGradient id="soilFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#4B533E" stopOpacity={0.35} />
-                    <stop offset="95%" stopColor="#4B533E" stopOpacity={0} />
+                    <stop offset="5%" stopColor="hsl(var(--safa-forest))" stopOpacity={0.35} />
+                    <stop offset="95%" stopColor="hsl(var(--safa-forest))" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E3DDCD" vertical={false} />
-                <XAxis dataKey="t" tick={{ fontSize: 10, fill: '#8B7355' }} minTickGap={24} />
-                <YAxis tick={{ fontSize: 10, fill: '#8B7355' }} width={28} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #E3DDCD', fontSize: 11 }} />
-                <Area type="monotone" dataKey="soil" stroke="#2C4A3B" fill="url(#soilFill)" strokeWidth={2} name={L('رطوبة التربة %', 'Soil %')} />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--safa-line))" vertical={false} />
+                <XAxis dataKey="t" tick={{ fontSize: 10, fill: 'hsl(var(--safa-earth))' }} minTickGap={24} />
+                <YAxis tick={{ fontSize: 10, fill: 'hsl(var(--safa-earth))' }} width={28} />
+                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid hsl(var(--safa-line))', backgroundColor: 'hsl(var(--safa-card))', color: 'hsl(var(--safa-ink))', fontSize: 11 }} />
+                <Area type="monotone" dataKey="soil" stroke="hsl(var(--chart-2))" fill="url(#soilFill)" strokeWidth={2} name={L('رطوبة التربة %', 'Soil %')} />
                 <Line type="monotone" dataKey="temp" stroke="#B03A2E" strokeWidth={1.5} dot={false} name={L('الحرارة °C', 'Temp °C')} />
               </AreaChart>
             </ResponsiveContainer>

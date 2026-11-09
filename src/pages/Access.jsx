@@ -89,7 +89,7 @@ export default function Access() {
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <button
             onClick={() => enter('visitor', '/dashboard')}
-            className="inline-flex items-center gap-2 rounded-full bg-safa-cream px-6 py-3.5 text-sm font-semibold text-safa-palm transition hover:bg-white"
+            className="inline-flex items-center gap-2 rounded-full bg-safa-bone px-6 py-3.5 text-sm font-semibold text-safa-palmDeep transition hover:bg-white"
           >
             {L('الدخول كزائر', 'Continue as visitor')}
             <Arrow className="h-4 w-4" />

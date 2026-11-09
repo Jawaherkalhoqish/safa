@@ -6,6 +6,7 @@ import { useCount } from '@/lib/data';
 import BrandLogo from '@/components/BrandLogo';
 import { ROLE } from '@/lib/format';
 import GlobalSearch from '@/components/GlobalSearch';
+import ThemeToggle from '@/components/ThemeToggle';
 import { useCart } from '@/components/CartProvider';
 
 export default function AppTopBar({ role, onOpenNav }) {
@@ -23,7 +24,7 @@ export default function AppTopBar({ role, onOpenNav }) {
         </button>
 
         <Link to="/dashboard" className="flex items-center gap-2 lg:hidden">
-          <BrandLogo tone="onLight" className="h-7" />
+          <BrandLogo tone="auto" className="h-7" />
           <span className="font-display text-sm font-semibold text-safa-palm">SA’FA</span>
         </Link>
 
@@ -44,7 +45,7 @@ export default function AppTopBar({ role, onOpenNav }) {
           <button onClick={setOpen} className="relative rounded-xl border border-safa-line bg-white p-2 text-safa-palm" aria-label={L('السلة', 'Cart')}>
             <ShoppingBag className="h-4 w-4" />
             {count > 0 ? (
-              <span className="absolute -end-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-safa-palm px-1 text-[9px] font-semibold text-safa-cream">
+              <span className="absolute -end-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-safa-palm px-1 text-[9px] font-semibold text-safa-bone">
                 {count}
               </span>
             ) : null}
@@ -58,6 +59,8 @@ export default function AppTopBar({ role, onOpenNav }) {
               </span>
             ) : null}
           </Link>
+
+          <ThemeToggle tone="onLight" className="hidden sm:flex" />
 
           <button onClick={toggle} className="rounded-xl border border-safa-line bg-white p-2 text-safa-palm" aria-label={L('تغيير اللغة', 'Switch language')}>
             <Globe className="h-4 w-4" />

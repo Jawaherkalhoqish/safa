@@ -1,8 +1,9 @@
-import { BadgeCheck, BarChart3, Bell, Boxes, Building2, Factory, FileText, LayoutDashboard, MapPin, PlayCircle, Recycle, Settings, ShieldAlert, ShoppingBag, Sprout, Activity, Truck, Globe, LogIn } from 'lucide-react';
+import { BadgeCheck, BarChart3, Bell, Boxes, Building2, Factory, FileText, LayoutDashboard, MapPin, PlayCircle, Recycle, ScanLine, Settings, ShieldAlert, ShoppingBag, Sprout, Activity, Truck, Globe, LogIn } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useLang } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 import BrandLogo from '@/components/BrandLogo';
+import ThemeToggle from '@/components/ThemeToggle';
 import { ROLE } from '@/lib/format';
 
 const GROUPS = [
@@ -12,6 +13,7 @@ const GROUPS = [
       { to: '/dashboard', icon: LayoutDashboard, ar: 'الرئيسية', en: 'Home' },
       { to: '/palms', icon: Sprout, ar: 'نخيلي', en: 'My Palms' },
       { to: '/health', icon: Activity, ar: 'صحة النخيل', en: 'Palm Health' },
+      { to: '/analysis', icon: ScanLine, ar: 'تحليل صور النخيل', en: 'Palm AI Analysis' },
       { to: '/weevil', icon: ShieldAlert, ar: 'السوسة الحمراء', en: 'Red Palm Weevil' },
       { to: '/map', icon: MapPin, ar: 'الخريطة الذكية', en: 'Smart Map' },
     ],
@@ -89,7 +91,7 @@ export default function SideNav({ role }) {
                     className={({ isActive }) =>
                       cn(
                         'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] transition',
-                        isActive ? 'bg-safa-cream text-safa-palm shadow-sm' : 'text-safa-cream/70 hover:bg-white/8 hover:text-safa-cream'
+                        isActive ? 'bg-safa-bone text-safa-palmDeep shadow-sm' : 'text-safa-cream/70 hover:bg-white/8 hover:text-safa-cream'
                       )
                     }
                   >
@@ -108,9 +110,12 @@ export default function SideNav({ role }) {
           <div className="text-[10px] text-safa-cream/40">
             <p>{L('نسخة تجريبية | بيئة عرض', 'Prototype | Demo Environment')}</p>
           </div>
-          <button onClick={toggle} className="rounded-full border border-white/15 p-1.5 text-safa-cream/70 transition hover:bg-white/10" aria-label={L('تغيير اللغة', 'Switch language')}>
-            <Globe className="h-3.5 w-3.5" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle tone="onDark" className="h-7 w-[54px]" />
+            <button onClick={toggle} className="rounded-full border border-white/15 p-1.5 text-safa-cream/70 transition hover:bg-white/10" aria-label={L('تغيير اللغة', 'Switch language')}>
+              <Globe className="h-3.5 w-3.5" />
+            </button>
+          </div>
         </div>
         <NavLink to="/login" className="mt-3 flex items-center gap-2 text-[11px] text-safa-cream/55 transition hover:text-safa-cream">
           <LogIn className="h-3.5 w-3.5" />

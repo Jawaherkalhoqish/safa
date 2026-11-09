@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import SideNav from '@/components/SideNav';
 import MobileBottomNav from '@/components/MobileBottomNav';
 import AppTopBar from '@/components/AppTopBar';
@@ -12,6 +12,7 @@ const NAV = [
   { to: '/dashboard', ar: 'الرئيسية', en: 'Home' },
   { to: '/palms', ar: 'نخيلي', en: 'My Palms' },
   { to: '/health', ar: 'صحة النخيل', en: 'Palm Health' },
+  { to: '/analysis', ar: 'تحليل صور النخيل', en: 'Palm AI Analysis' },
   { to: '/weevil', ar: 'السوسة الحمراء', en: 'Red Palm Weevil' },
   { to: '/map', ar: 'الخريطة الذكية', en: 'Smart Map' },
   { to: '/waste', ar: 'المخلفات', en: 'Waste' },
@@ -29,6 +30,7 @@ const NAV = [
 export default function AppShell() {
   const { role } = useSession();
   const { L, isAr } = useLang();
+  const { pathname } = useLocation();
   const [navOpen, setNavOpen] = useState(false);
 
   useEffect(() => {
@@ -36,11 +38,11 @@ export default function AppShell() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-safa-cream">
+    <div className="glow-ambient min-h-screen bg-safa-cream">
         <SideNav role={role} />
         <div className="lg:ps-[248px] xl:ps-[268px]">
           <AppTopBar role={role} onOpenNav={() => setNavOpen(true)} />
-          <main className="mx-auto max-w-[1400px] px-4 pb-28 pt-6 md:px-6 md:pb-16">
+          <main key={pathname} className="mx-auto max-w-[1400px] animate-rise px-4 pb-28 pt-6 md:px-6 md:pb-16">
             <Outlet />
           </main>
           <AppFooterNote role={role} />

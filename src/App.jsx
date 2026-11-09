@@ -14,6 +14,7 @@ import Dashboard from '@/pages/Dashboard';
 import MyPalms from '@/pages/MyPalms';
 import PalmProfile from '@/pages/PalmProfile';
 import PalmHealth from '@/pages/PalmHealth';
+import PalmAnalysis from '@/pages/PalmAnalysis';
 import Weevil from '@/pages/Weevil';
 import SmartMap from '@/pages/SmartMap';
 import Waste from '@/pages/Waste';
@@ -74,6 +75,7 @@ const AuthenticatedApp = () => {
         <Route path="/palms" element={<MyPalms />} />
         <Route path="/palms/:id" element={<PalmProfile />} />
         <Route path="/health" element={<PalmHealth />} />
+        <Route path="/analysis" element={<PalmAnalysis />} />
         <Route path="/weevil" element={<Weevil />} />
         <Route path="/map" element={<SmartMap />} />
         <Route path="/waste" element={<Waste />} />
