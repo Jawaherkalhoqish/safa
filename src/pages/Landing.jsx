@@ -7,7 +7,6 @@ import LandingHero from '@/components/LandingHero';
 import HowItWorks from '@/components/HowItWorks';
 import PlatformFlow from '@/components/site/PlatformFlow';
 import Reveal from '@/components/motion/Reveal';
-import LandingStory from '@/components/LandingStory';
 import AboutSection from '@/components/site/AboutSection';
 import EcosystemJourney from '@/components/site/EcosystemJourney';
 import PricingSection from '@/components/site/PricingSection';
@@ -58,7 +57,6 @@ export default function Landing() {
       <EcosystemJourney />
       <PlatformFlow />
       <PricingSection />
-      <LandingStory />
       <ContactSection />
 
       <section className="bg-safa-cream py-20 md:py-24">
