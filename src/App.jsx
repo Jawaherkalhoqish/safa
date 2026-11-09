@@ -6,6 +6,7 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
+import CartProvider from '@/components/CartProvider';
 import { LanguageProvider } from '@/lib/i18n';
 import Landing from '@/pages/Landing';
 import Access from '@/pages/Access';
@@ -101,8 +102,10 @@ function App() {
       <QueryClientProvider client={queryClientInstance}>
         <LanguageProvider>
           <Router>
-            <ScrollToTop />
-            <AuthenticatedApp />
+            <CartProvider>
+              <ScrollToTop />
+              <AuthenticatedApp />
+            </CartProvider>
           </Router>
         </LanguageProvider>
         <Toaster />

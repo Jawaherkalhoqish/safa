@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import SideNav from '@/components/SideNav';
 import MobileBottomNav from '@/components/MobileBottomNav';
 import AppTopBar from '@/components/AppTopBar';
-import CartProvider from '@/components/CartProvider';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { useSession } from '@/lib/useSession';
 import { useLang } from '@/lib/i18n';
@@ -37,8 +36,7 @@ export default function AppShell() {
   }, []);
 
   return (
-    <CartProvider>
-      <div className="min-h-screen bg-safa-cream">
+    <div className="min-h-screen bg-safa-cream">
         <SideNav role={role} />
         <div className="lg:ps-[248px] xl:ps-[268px]">
           <AppTopBar role={role} onOpenNav={() => setNavOpen(true)} />
@@ -76,8 +74,7 @@ export default function AppShell() {
             </div>
           </SheetContent>
         </Sheet>
-      </div>
-    </CartProvider>
+    </div>
   );
 }
 
