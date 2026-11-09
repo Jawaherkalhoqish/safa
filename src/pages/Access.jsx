@@ -1,29 +1,31 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Building2, Factory, Globe, Leaf, LogIn, Sprout, UserRound } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Factory, Globe, Leaf, LogIn, Sprout, UserRound } from 'lucide-react';
 import { ASSETS } from '@/lib/assets';
 import BrandLogo from '@/components/BrandLogo';
 import { useLang } from '@/lib/i18n';
 import { ROLES, setRole } from '@/lib/session';
-import { ROLE } from '@/lib/format';
 
 const CARDS = [
   {
+    role: 'visitor',
+    icon: UserRound,
+    to: '/dashboard',
+    ar: { title: 'زائر', body: 'استكشف سعفة وتعرّف على المنظومة الزراعية.' },
+    en: { title: 'Visitor', body: 'Explore SA’FA and discover the agricultural ecosystem.' },
+  },
+  {
     role: 'farmer',
     icon: Sprout,
-    ar: { title: 'مزارع', body: 'إدارة نخيلك ومخلفاتك' },
-    en: { title: 'Farmer', body: 'Manage your palms and waste' },
+    to: '/dashboard',
+    ar: { title: 'مزارع', body: 'إدارة المزارع والنخيل والمخلفات الزراعية.' },
+    en: { title: 'Farmer', body: 'Manage farms, palm trees, and agricultural waste.' },
   },
   {
     role: 'facility',
     icon: Factory,
-    ar: { title: 'منشأة تدوير', body: 'إدارة المخلفات وطلبات الاستلام' },
-    en: { title: 'Recycling facility', body: 'Manage waste and pickup requests' },
-  },
-  {
-    role: 'authority',
-    icon: Building2,
-    ar: { title: 'جهة مختصة', body: 'مراقبة المشهد الزراعي والبيئي' },
-    en: { title: 'Authority', body: 'Monitor the agricultural and environmental landscape' },
+    to: '/facility',
+    ar: { title: 'منشأة تدوير', body: 'إدارة المخلفات الزراعية وطلبات الجمع وعمليات التدوير.' },
+    en: { title: 'Recycling Facility', body: 'Manage agricultural waste, collection requests, and recycling operations.' },
   },
 ];
 
@@ -55,33 +57,29 @@ export default function Access() {
         </div>
 
         <div className="mt-14 max-w-2xl">
-          <p className="eyebrow text-safa-gold">{L('الدخول إلى المنصة', 'PLATFORM ACCESS')}</p>
+          <p className="eyebrow text-safa-gold">{L('اكتشف سعفة', 'DISCOVER SA’FA')}</p>
           <h1 className="mt-4 font-display text-3xl font-semibold leading-tight text-safa-cream md:text-5xl">{L('اكتشف سعفة من منظورك', 'Explore SA’FA from Your Perspective')}</h1>
           <p className="mt-4 text-sm leading-relaxed text-safa-cream/70 md:text-base">
             {L('اختر دورك للدخول كزائر واستكشاف المنظومة دون تسجيل', 'Pick your role, enter as a guest and explore the ecosystem without signing up')}
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <button
-            onClick={() => enter('visitor', '/dashboard')}
-            className="group rounded-3xl border border-white/12 bg-white/5 p-6 text-start backdrop-blur-sm transition hover:-translate-y-1 hover:border-safa-gold/40 hover:bg-white/10"
-          >
-            <UserRound className="h-5 w-5 text-safa-gold" />
-            <p className="mt-5 text-base font-semibold text-safa-cream">{L(ROLE.visitor.ar, ROLE.visitor.en)}</p>
-            <p className="mt-1 text-xs leading-relaxed text-safa-cream/60">{L('استكشف سعفة', 'Explore SA’FA')}</p>
-            <p className="mt-4 text-[11px] leading-relaxed text-safa-cream/45">{L('بيئة عرض محدودة للتعرف على المنصة.', 'A controlled demo environment to explore the platform.')}</p>
-          </button>
-
+        <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {CARDS.map((c) => (
             <button
               key={c.role}
-              onClick={() => enter(c.role, c.role === 'facility' ? '/facility' : c.role === 'authority' ? '/authority' : '/dashboard')}
-              className="group rounded-3xl border border-white/12 bg-white/5 p-6 text-start backdrop-blur-sm transition hover:-translate-y-1 hover:border-safa-gold/40 hover:bg-white/10"
+              onClick={() => enter(c.role, c.to)}
+              className="group flex h-full flex-col rounded-3xl border border-white/12 bg-white/5 p-6 text-start backdrop-blur-sm transition hover:-translate-y-1 hover:border-safa-gold/40 hover:bg-white/10"
             >
-              <c.icon className="h-5 w-5 text-safa-gold" />
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-safa-gold transition group-hover:border-safa-gold/40">
+                <c.icon className="h-5 w-5" />
+              </span>
               <p className="mt-5 text-base font-semibold text-safa-cream">{L(c.ar.title, c.en.title)}</p>
-              <p className="mt-1 text-xs leading-relaxed text-safa-cream/60">{L(c.ar.body, c.en.body)}</p>
+              <p className="mt-1.5 flex-1 text-xs leading-relaxed text-safa-cream/60">{L(c.ar.body, c.en.body)}</p>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-[11px] text-safa-cream/45 transition group-hover:gap-2.5 group-hover:text-safa-gold">
+                {L('الدخول كزائر', 'Enter as guest')}
+                <Arrow className="h-3.5 w-3.5" />
+              </span>
             </button>
           ))}
         </div>
@@ -107,8 +105,8 @@ export default function Access() {
           <p className="flex items-start gap-2 text-[11px] leading-relaxed text-safa-cream/45">
             <Leaf className="mt-0.5 h-3.5 w-3.5 shrink-0 text-safa-gold" />
             {L(
-              'في نسخة الهاكاثون، الوصول التجريبي متاح دون تسجيل حقيقي. الزائر يستعرض البيانات ولا يعدّل السجلات.',
-              'In the hackathon build, demo access is available without real authentication. Visitors explore the data without editing records.'
+              'الوصول التجريبي متاح دون بريد أو كلمة مرور أو دفع. الزائر يستعرض البيانات ولا يعدّل السجلات.',
+              'Guest access needs no email, password or payment. Visitors explore the data without editing records.'
             )}
           </p>
           <p className="mt-2 text-[10px] text-safa-cream/30">{ROLES.join(' · ')}</p>

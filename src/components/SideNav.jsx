@@ -1,4 +1,4 @@
-import { BadgeCheck, BarChart3, Bell, Boxes, Building2, Factory, FileText, LayoutDashboard, MapPin, PlayCircle, Recycle, ScanLine, Settings, ShieldAlert, ShoppingBag, Sprout, Activity, Truck, Globe, LogIn } from 'lucide-react';
+import { BadgeCheck, BarChart3, Bell, Boxes, Factory, FileText, LayoutDashboard, LandPlot, MapPin, PlayCircle, Recycle, ScanLine, Settings, ShieldAlert, ShoppingBag, Sprout, Activity, Truck, Users, Globe, LogIn } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useLang } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
@@ -13,7 +13,7 @@ const GROUPS = [
       { to: '/dashboard', icon: LayoutDashboard, ar: 'الرئيسية', en: 'Home' },
       { to: '/palms', icon: Sprout, ar: 'نخيلي', en: 'My Palms' },
       { to: '/health', icon: Activity, ar: 'صحة النخيل', en: 'Palm Health' },
-      { to: '/analysis', icon: ScanLine, ar: 'تحليل صور النخيل', en: 'Palm AI Analysis' },
+      { to: '/analysis', icon: ScanLine, ar: 'تحليل صور النخيل بالذكاء الاصطناعي', en: 'AI Palm Image Analysis' },
       { to: '/weevil', icon: ShieldAlert, ar: 'السوسة الحمراء', en: 'Red Palm Weevil' },
       { to: '/map', icon: MapPin, ar: 'الخريطة الذكية', en: 'Smart Map' },
     ],
@@ -25,6 +25,8 @@ const GROUPS = [
       { to: '/collection', icon: Truck, ar: 'مسار الجمع', en: 'Smart Collection' },
       { to: '/circular', icon: Recycle, ar: 'الاستفادة والتدوير', en: 'Circular Economy' },
       { to: '/store', icon: ShoppingBag, ar: 'متجر سعفة', en: 'SA’FA Store' },
+      { to: '/lands', icon: LandPlot, ar: 'الأراضي الزراعية', en: 'Agricultural Lands' },
+      { to: '/community', icon: Users, ar: 'المجتمع الزراعي', en: 'Agricultural Community' },
     ],
   },
   {
@@ -32,7 +34,6 @@ const GROUPS = [
     items: [
       { to: '/impact', icon: BarChart3, ar: 'الأثر', en: 'Impact' },
       { to: '/alerts', icon: Bell, ar: 'التنبيهات', en: 'Alerts' },
-      { to: '/authority', icon: Building2, ar: 'لوحة الجهات المختصة', en: 'Authority', roles: ['authority', 'admin', 'visitor'] },
       { to: '/facility', icon: Factory, ar: 'منشأة التدوير', en: 'Facility', roles: ['facility', 'admin', 'visitor'] },
       { to: '/admin', icon: Settings, ar: 'لوحة الإدارة', en: 'Admin', roles: ['admin'] },
       { to: '/methodology', icon: FileText, ar: 'منهجية سعفة', en: 'Methodology' },

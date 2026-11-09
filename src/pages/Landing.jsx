@@ -12,7 +12,6 @@ import AboutSection from '@/components/site/AboutSection';
 import EcosystemJourney from '@/components/site/EcosystemJourney';
 import ServicesSection from '@/components/site/ServicesSection';
 import PricingSection from '@/components/site/PricingSection';
-import PhilosophySection from '@/components/site/PhilosophySection';
 import ContactSection from '@/components/site/ContactSection';
 import { useLang } from '@/lib/i18n';
 
@@ -61,7 +60,6 @@ export default function Landing() {
       <PlatformFlow />
       <ServicesSection />
       <PricingSection />
-      <PhilosophySection />
       <LandingStory />
       <ContactSection />
 

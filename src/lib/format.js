@@ -112,7 +112,6 @@ export const ROLE = {
   visitor: { ar: 'زائر', en: 'Visitor' },
   farmer: { ar: 'مزارع', en: 'Farmer' },
   facility: { ar: 'منشأة تدوير', en: 'Recycling facility' },
-  authority: { ar: 'جهة مختصة', en: 'Authority' },
   admin: { ar: 'مدير المنصة', en: 'Administrator' },
 };
 

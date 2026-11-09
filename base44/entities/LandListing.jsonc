@@ -1,0 +1,158 @@
+{
+  "name": "LandListing",
+  "type": "object",
+  "properties": {
+    "listing_code": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "location_en": {
+      "type": "string"
+    },
+    "area_ha": {
+      "type": "number"
+    },
+    "palm_count": {
+      "type": "number"
+    },
+    "soil_type": {
+      "type": "string"
+    },
+    "soil_type_en": {
+      "type": "string"
+    },
+    "water_source": {
+      "type": "string"
+    },
+    "water_source_en": {
+      "type": "string"
+    },
+    "irrigation_type": {
+      "type": "string"
+    },
+    "irrigation_type_en": {
+      "type": "string"
+    },
+    "ownership": {
+      "type": "string",
+      "enum": [
+        "sale",
+        "lease",
+        "investment"
+      ],
+      "default": "sale",
+      "enumColors": [
+        "green",
+        "blue",
+        "purple"
+      ]
+    },
+    "price": {
+      "type": "number"
+    },
+    "price_unit": {
+      "type": "string",
+      "enum": [
+        "total",
+        "per_ha",
+        "per_year"
+      ],
+      "default": "total",
+      "enumColors": [
+        "gray",
+        "blue",
+        "yellow"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "reserved",
+        "under_negotiation",
+        "leased"
+      ],
+      "default": "available",
+      "enumColors": [
+        "green",
+        "yellow",
+        "orange",
+        "gray"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "owner_name_en": {
+      "type": "string"
+    },
+    "owner_type": {
+      "type": "string",
+      "enum": [
+        "farmer",
+        "company",
+        "investor"
+      ],
+      "default": "farmer",
+      "enumColors": [
+        "green",
+        "blue",
+        "yellow"
+      ]
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "listed_date": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

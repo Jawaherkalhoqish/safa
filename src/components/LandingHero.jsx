@@ -64,7 +64,7 @@ export default function LandingHero() {
               href="#how"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-medium text-safa-cream transition hover:bg-white/10"
             >
-              {L('استكشف خدماتنا', 'Explore Our Services')}
+              {L('استكشف المنظومة', 'Explore the ecosystem')}
             </a>
           </div>
 

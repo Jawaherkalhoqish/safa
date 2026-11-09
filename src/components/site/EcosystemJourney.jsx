@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
+  Banknote,
   Building2,
   ClipboardCheck,
   ClipboardList,
@@ -7,7 +8,6 @@ import {
   Factory,
   Package,
   Pause,
-  PiggyBank,
   Play,
   Sprout,
   Store,
@@ -20,7 +20,7 @@ import { cn } from '@/lib/utils';
 const ACTORS = [
   { icon: Sprout, ar: 'المزارع', en: 'Farmer' },
   { icon: Building2, ar: 'الشركات والمنشآت', en: 'Companies & facilities' },
-  { icon: PiggyBank, ar: 'المستثمر', en: 'Investor' },
+  { icon: Banknote, ar: 'المستثمر', en: 'Investor' },
 ];
 
 const STEPS = [

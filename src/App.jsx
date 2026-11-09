@@ -24,8 +24,9 @@ import Circular from '@/pages/Circular';
 import Store from '@/pages/Store';
 import Impact from '@/pages/Impact';
 import Alerts from '@/pages/Alerts';
-import Authority from '@/pages/Authority';
 import Facility from '@/pages/Facility';
+import Community from '@/pages/Community';
+import Lands from '@/pages/Lands';
 import Methodology from '@/pages/Methodology';
 import Legal from '@/pages/Legal';
 import Admin from '@/pages/Admin';
@@ -85,7 +86,8 @@ const AuthenticatedApp = () => {
         <Route path="/store" element={<Store />} />
         <Route path="/impact" element={<Impact />} />
         <Route path="/alerts" element={<Alerts />} />
-        <Route path="/authority" element={<Authority />} />
+        <Route path="/lands" element={<Lands />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/facility" element={<Facility />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/methodology" element={<Methodology />} />

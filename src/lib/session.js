@@ -1,6 +1,6 @@
 const KEY = 'safa_role';
 
-export const ROLES = ['visitor', 'farmer', 'facility', 'authority', 'admin'];
+export const ROLES = ['visitor', 'farmer', 'facility', 'admin'];
 
 export const getRole = () => {
   try {

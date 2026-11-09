@@ -113,7 +113,7 @@ export default function PalmAnalysis() {
     <div className="space-y-6">
       <PageHeader
         eyebrow={L('الذكاء الزراعي', 'AGRICULTURAL INTELLIGENCE')}
-        title={L('تحليل صور النخيل', 'Palm image analysis')}
+        title={L('تحليل صور النخيل بالذكاء الاصطناعي', 'AI Palm Image Analysis')}
         subtitle={L(
           'صوّر النخلة أو السعف، واحصل على مؤشرات بصرية وخطر متابعة وخطوات مقترحة، محفوظة في سجل النخلة للمقارنة.',
           'Photograph the palm or its fronds to get visual indicators, follow-up risk and suggested steps, saved to the palm record for comparison.'

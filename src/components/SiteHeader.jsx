@@ -9,7 +9,6 @@ import { cn } from '@/lib/utils';
 export const SITE_SECTIONS = [
   { id: 'about', ar: 'عن سعفة', en: 'About SA’FA' },
   { id: 'how', ar: 'كيف تعمل سعفة', en: 'How it works' },
-  { id: 'services', ar: 'خدماتنا', en: 'Services' },
   { id: 'subscriptions', ar: 'الاشتراكات', en: 'Subscriptions' },
   { id: 'contact', ar: 'تواصل معنا', en: 'Contact' },
 ];

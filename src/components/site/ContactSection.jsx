@@ -17,7 +17,6 @@ export default function ContactSection() {
     { value: 'farmer', ar: 'مزارع أو مالك مزرعة', en: 'Farmer or farm owner' },
     { value: 'facility', ar: 'شركة أو منشأة زراعية', en: 'Agricultural company or facility' },
     { value: 'investor', ar: 'مستثمر', en: 'Investor' },
-    { value: 'authority', ar: 'جهة مختصة', en: 'Authority' },
   ];
 
   if (sent) {

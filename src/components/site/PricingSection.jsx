@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check, Minus, Sparkles } from 'lucide-react';
+import { Check, Sparkles } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -55,14 +55,6 @@ const GROUPS = [
         ],
       },
     ],
-    compare: [
-      { ar: 'السعة', en: 'Capacity', values: ['500', '2,500', '∞'] },
-      { ar: 'صحة النخيل والتنبيهات', en: 'Palm health & alerts', values: [true, true, true] },
-      { ar: 'تحليل صور النخيل', en: 'Palm image analysis', values: [false, true, true] },
-      { ar: 'التنبؤ بالمخلفات', en: 'Waste prediction', values: [false, true, true] },
-      { ar: 'الجمع الذكي', en: 'Smart collection', values: [false, true, true] },
-      { ar: 'تحليلات متقدمة وتكامل', en: 'Advanced analytics & integrations', values: [false, false, true] },
-    ],
   },
   {
     key: 'recycling',
@@ -112,22 +104,8 @@ const GROUPS = [
         ],
       },
     ],
-    compare: [
-      { ar: 'السعة الشهرية', en: 'Monthly capacity', values: ['1,000', '5,000', '∞'] },
-      { ar: 'استلام وتتبع المخلفات', en: 'Waste intake & tracking', values: [true, true, true] },
-      { ar: 'جدولة جمع متقدمة', en: 'Advanced scheduling', values: [false, true, true] },
-      { ar: 'سوق المنتجات الدائرة', en: 'Circular marketplace', values: [false, true, true] },
-      { ar: 'تحليلات تشغيلية', en: 'Operational analytics', values: [false, true, true] },
-      { ar: 'تكامل وAPI وتقارير امتثال', en: 'Integrations, API & compliance', values: [false, false, true] },
-    ],
   },
 ];
-
-function Cell({ value, L }) {
-  if (value === true) return <Check className="mx-auto h-4 w-4 text-safa-oliveSoft" aria-label={L('مشمول', 'Included')} />;
-  if (value === false) return <Minus className="mx-auto h-4 w-4 text-safa-earth/35" aria-label={L('غير مشمول', 'Not included')} />;
-  return <span className="text-[12px] tabular-nums text-safa-ink/70">{value}</span>;
-}
 
 export default function PricingSection() {
   const { L, isAr } = useLang();
@@ -205,32 +183,6 @@ export default function PricingSection() {
               ))}
             </div>
 
-            <div className="mt-5 panel overflow-x-auto p-0">
-              <table className="w-full min-w-[560px] text-start">
-                <thead>
-                  <tr className="border-b border-safa-line bg-safa-mist/60 text-[11px] uppercase tracking-[0.12em] text-safa-earth">
-                    <th className="px-4 py-3 text-start font-semibold">{L('المقارنة', 'Comparison')}</th>
-                    {group.plans.map((p) => (
-                      <th key={p.name} className="px-4 py-3 text-center font-semibold">
-                        {p.name.replace(/^(Farmer|Recycling) /, '')}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {group.compare.map((row) => (
-                    <tr key={row.en} className="border-b border-safa-line/60 last:border-0 text-[13px] text-safa-ink/75">
-                      <td className="px-4 py-3">{isAr ? row.ar : row.en}</td>
-                      {row.values.map((v, i) => (
-                        <td key={i} className="px-4 py-3 text-center">
-                          <Cell value={v} L={L} />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </div>
         ))}
       </div>
