@@ -41,31 +41,57 @@
     --sidebar-accent-foreground: 45 43% 97%;
     --sidebar-border: 155 18% 22%;
     --sidebar-ring: 38 49% 57%;
+
+    /* SA'FA surfaces & text, theme-aware */
+    --safa-cream: 47 53% 97%;
+    --safa-mist: 46 32% 92%;
+    --safa-line: 44 28% 85%;
+    --safa-ink: 98 11% 14%;
+    --safa-earth: 33 24% 44%;
+    --safa-forest: 156 32% 17%;
+    --safa-card: 0 0% 100%;
+    --glow-a: 25 40 22;
+    --glow-b: 200 161 90;
   }
 
   .dark {
-    --background: 150 22% 8%;
-    --foreground: 45 30% 94%;
-    --card: 150 20% 11%;
-    --card-foreground: 45 30% 94%;
-    --popover: 150 20% 11%;
-    --popover-foreground: 45 30% 94%;
+    --background: 150 30% 8%;
+    --foreground: 111 16% 92%;
+    --card: 146 25% 11%;
+    --card-foreground: 111 16% 92%;
+    --popover: 146 25% 11%;
+    --popover-foreground: 111 16% 92%;
     --primary: 45 30% 92%;
     --primary-foreground: 150 26% 11%;
-    --secondary: 150 16% 16%;
-    --secondary-foreground: 45 30% 94%;
-    --muted: 150 16% 16%;
-    --muted-foreground: 45 12% 68%;
-    --accent: 150 16% 18%;
-    --accent-foreground: 45 30% 94%;
+    --secondary: 150 22% 14%;
+    --secondary-foreground: 111 16% 92%;
+    --muted: 150 22% 14%;
+    --muted-foreground: 111 12% 68%;
+    --accent: 150 20% 17%;
+    --accent-foreground: 111 16% 92%;
     --destructive: 8 58% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 150 14% 20%;
-    --input: 150 14% 20%;
+    --border: 140 19% 19%;
+    --input: 140 19% 19%;
     --ring: 38 49% 57%;
-    --sidebar-background: 150 24% 7%;
+    --chart-1: 124 28% 66%;
+    --chart-2: 80 30% 58%;
+    --chart-3: 38 55% 66%;
+    --chart-4: 34 44% 58%;
+    --chart-5: 40 18% 62%;
+    --sidebar-background: 150 30% 7%;
     --sidebar-foreground: 45 30% 92%;
     --sidebar-border: 150 16% 18%;
+
+    --safa-cream: 150 30% 8%;
+    --safa-mist: 150 27% 10%;
+    --safa-line: 140 19% 19%;
+    --safa-ink: 111 16% 92%;
+    --safa-earth: 37 23% 64%;
+    --safa-forest: 124 23% 88%;
+    --safa-card: 146 25% 11%;
+    --glow-a: 124 60 62;
+    --glow-b: 200 161 90;
   }
 
   * {
@@ -80,6 +106,7 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     letter-spacing: -0.005em;
+    transition: background-color 0.35s ease, color 0.35s ease;
   }
 
   html[dir="rtl"] body {
@@ -126,5 +153,61 @@
   .grain {
     background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
     background-size: 3px 3px;
+  }
+
+  /* refined palm-green ambient light, never neon */
+  .glow-ambient {
+    position: relative;
+    isolation: isolate;
+  }
+  .glow-ambient::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(48% 38% at 12% 0%, rgba(var(--glow-a), 0.14), transparent 72%),
+      radial-gradient(38% 42% at 92% 8%, rgba(var(--glow-b), 0.1), transparent 74%);
+  }
+  .palm-glow {
+    box-shadow: 0 18px 44px -28px rgba(30, 58, 47, 0.45), 0 0 0 1px rgba(30, 58, 47, 0.03);
+  }
+  .palm-glow-hover {
+    transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+  }
+  .palm-glow-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 50px -26px rgba(30, 58, 47, 0.42), 0 0 30px -18px rgba(125, 139, 93, 0.55);
+  }
+  .ring-glow {
+    box-shadow: 0 0 0 1px rgba(125, 139, 93, 0.22), 0 0 26px -12px rgba(125, 139, 93, 0.5);
+  }
+
+  /* card surfaces follow the theme */
+  .dark .bg-white {
+    background-color: hsl(var(--safa-card));
+  }
+  .dark .bg-white\/70 {
+    background-color: hsl(var(--safa-card) / 0.7);
+  }
+  .dark .bg-white\/90 {
+    background-color: hsl(var(--safa-card) / 0.9);
+  }
+  .dark .bg-white\/95 {
+    background-color: hsl(var(--safa-card) / 0.95);
+  }
+  .dark .panel {
+    background-color: hsl(var(--safa-card));
+    border-color: hsl(var(--safa-line));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 18px 40px -26px rgba(0, 0, 0, 0.7);
+  }
+  .dark .palm-glow {
+    box-shadow: 0 18px 44px -26px rgba(0, 0, 0, 0.75), 0 0 34px -20px rgba(125, 139, 93, 0.5);
+  }
+  .dark .glow-ambient::before {
+    background:
+      radial-gradient(48% 38% at 12% 0%, rgba(125, 139, 93, 0.2), transparent 72%),
+      radial-gradient(38% 42% at 92% 8%, rgba(200, 161, 90, 0.12), transparent 74%);
   }
 }
