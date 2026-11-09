@@ -10,7 +10,6 @@ import Reveal from '@/components/motion/Reveal';
 import LandingStory from '@/components/LandingStory';
 import AboutSection from '@/components/site/AboutSection';
 import EcosystemJourney from '@/components/site/EcosystemJourney';
-import ServicesSection from '@/components/site/ServicesSection';
 import PricingSection from '@/components/site/PricingSection';
 import ContactSection from '@/components/site/ContactSection';
 import { useLang } from '@/lib/i18n';
@@ -58,7 +57,6 @@ export default function Landing() {
       <HowItWorks />
       <EcosystemJourney />
       <PlatformFlow />
-      <ServicesSection />
       <PricingSection />
       <LandingStory />
       <ContactSection />
