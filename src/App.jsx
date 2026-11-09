@@ -8,6 +8,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import CartProvider from '@/components/CartProvider';
 import { LanguageProvider } from '@/lib/i18n';
+import { ThemeProvider } from '@/lib/theme';
 import Landing from '@/pages/Landing';
 import Access from '@/pages/Access';
 import Dashboard from '@/pages/Dashboard';
