@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ChevronDown, Radio, ShieldAlert, Recycle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import { useLang } from '@/lib/i18n';
 import { ASSETS } from '@/lib/assets';
@@ -8,12 +8,6 @@ import BrandLogo from '@/components/BrandLogo';
 export default function LandingHero() {
   const { L, isAr } = useLang();
   const Arrow = isAr ? ArrowLeft : ArrowRight;
-
-  const chips = [
-    { icon: Radio, ar: 'إشارات النخلة', en: 'Palm signals', value: '0.72' },
-    { icon: ShieldAlert, ar: 'مؤشر خطر السوسة', en: 'RPW indicator', value: '0.25' },
-    { icon: Recycle, ar: 'مخلفات موجهة للتدوير', en: 'Waste routed', value: L('18 طن', '18 t') },
-  ];
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-safa-palmDeep">
@@ -60,20 +54,6 @@ export default function LandingHero() {
             >
               {L('استكشف المنظومة', 'Explore the ecosystem')}
             </a>
-          </div>
-
-          <div className="mt-12 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
-            {chips.map((c, i) => (
-              <div
-                key={c.en}
-                className="glass animate-rise px-4 py-3 transition duration-500 hover:-translate-y-0.5 hover:bg-white/15"
-                style={{ animationDelay: `${430 + i * 90}ms` }}
-              >
-                <c.icon className="h-4 w-4 text-safa-gold" />
-                <p className="mt-2 text-[11px] text-safa-cream/70">{L(c.ar, c.en)}</p>
-                <p className="font-display text-lg font-semibold text-safa-cream">{c.value}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
