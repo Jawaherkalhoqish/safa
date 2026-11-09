@@ -68,9 +68,17 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-[11px] text-safa-cream/45 sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} SA’FA | سعفة</span>
-          <span className="rounded-full border border-white/15 px-3 py-1">{L('نسخة تجريبية | بيئة عرض', 'Prototype | Demo Environment')}</span>
+        <div className="mt-12 flex flex-col items-center gap-6 border-t border-white/10 pt-8">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <span className="h-px w-10 bg-safa-sand/40" />
+            <p className="max-w-2xl font-display text-base leading-relaxed text-safa-cream/90 md:text-lg">
+              {L('«من واحة الأحساء، يمتد الأثر إلى العالم.»', '“From Al-Ahsa Oasis, Our Impact Reaches the World.”')}
+            </p>
+          </div>
+          <div className="flex w-full flex-col items-center justify-between gap-3 text-[11px] text-safa-cream/45 sm:flex-row">
+            <span>SA’FA 2026 ©</span>
+            <span className="rounded-full border border-white/15 px-3 py-1">{L('نسخة تجريبية | بيئة عرض', 'Prototype | Demo Environment')}</span>
+          </div>
         </div>
       </div>
     </footer>
