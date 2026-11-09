@@ -70,8 +70,12 @@ export default function PalmAnalysis() {
 
       setPrevious(history[0] || null);
       setResult(data);
-      await persist(data, file_uri);
-      await reloadHistory();
+      try {
+        await persist(data, file_uri);
+        await reloadHistory();
+      } catch (saveError) {
+        setSaved(false);
+      }
     } catch (e) {
       setError(e?.message || L('تعذر إكمال التحليل. حاول مرة أخرى.', 'The analysis could not be completed. Please try again.'));
     } finally {
