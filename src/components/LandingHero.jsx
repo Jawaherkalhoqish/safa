@@ -12,7 +12,7 @@ export default function LandingHero() {
   const chips = [
     { icon: Radio, ar: 'إشارات النخلة', en: 'Palm signals', value: '0.72' },
     { icon: ShieldAlert, ar: 'مؤشر خطر السوسة', en: 'RPW indicator', value: '0.25' },
-    { icon: Recycle, ar: 'مخلفات موجهة للتدوير', en: 'Waste routed', value: '18 طن' },
+    { icon: Recycle, ar: 'مخلفات موجهة للتدوير', en: 'Waste routed', value: L('18 طن', '18 t') },
   ];
 
   return (
@@ -38,12 +38,6 @@ export default function LandingHero() {
               'From Al-Ahsa’s Heritage, We Build a Sustainable Agricultural Ecosystem.'
             )}
           </h1>
-          <p className="mt-4 text-sm text-safa-sand md:text-base">
-            {L(
-              'From Al-Ahsa’s Heritage, We Build a Sustainable Agricultural Ecosystem.',
-              'من إرث الأحساء، نبني منظومة زراعية مستدامة.'
-            )}
-          </p>
 
           <p className="animate-rise mt-6 max-w-2xl text-base leading-relaxed text-safa-cream/85 md:text-lg" style={{ animationDelay: '230ms' }}>
             {L(

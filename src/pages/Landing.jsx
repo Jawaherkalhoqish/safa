@@ -48,7 +48,7 @@ export default function Landing() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-7xl px-5 text-[11px] text-safa-ink/40 md:px-8">
-          {L('بيانات تجريبية | Demo Data', 'Demo Data')}
+          {L('بيانات تجريبية', 'Demo data')}
         </p>
       </section>
 

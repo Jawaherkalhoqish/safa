@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Factory, Globe, Leaf, LogIn, Sprout, UserRound }
 import { ASSETS } from '@/lib/assets';
 import BrandLogo from '@/components/BrandLogo';
 import { useLang } from '@/lib/i18n';
-import { ROLES, setRole } from '@/lib/session';
+import { setRole } from '@/lib/session';
 
 const CARDS = [
   {
@@ -109,7 +109,9 @@ export default function Access() {
               'Guest access needs no email, password or payment. Visitors explore the data without editing records.'
             )}
           </p>
-          <p className="mt-2 text-[10px] text-safa-cream/30">{ROLES.join(' · ')}</p>
+          <p className="mt-2 text-[10px] text-safa-cream/30">
+            {L('الأدوار المتاحة: زائر · مزارع · منشأة تدوير', 'Available roles: visitor · farmer · recycling facility')}
+          </p>
         </div>
       </div>
     </div>

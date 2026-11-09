@@ -154,8 +154,7 @@ export default function PricingSection() {
                       {L('الأكثر اختيارًا', 'Most chosen')}
                     </span>
                   ) : null}
-                  <h4 className="text-sm font-semibold tracking-wide text-safa-forest">{p.name}</h4>
-                  <p className="mt-0.5 text-[12px] text-safa-earth">{isAr ? p.ar : p.name}</p>
+                  <h4 className="text-sm font-semibold tracking-wide text-safa-forest">{isAr ? p.ar : p.name}</h4>
                   <p className="mt-4 flex items-end gap-1.5">
                     <span className="display-num text-4xl text-safa-palm">{p.price.toLocaleString('en-US')}</span>
                     <span className="pb-1.5 text-xs text-safa-ink/55">{L('ريال / شهر', 'SAR / month')}</span>
@@ -191,7 +190,7 @@ export default function PricingSection() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="text-base">
-              {selected ? `${selected.name} · ${selected.price.toLocaleString('en-US')} ${L('ريال / شهر', 'SAR / month')}` : ''}
+              {selected ? `${isAr ? selected.ar : selected.name} · ${selected.price.toLocaleString('en-US')} ${L('ريال / شهر', 'SAR / month')}` : ''}
             </DialogTitle>
             <DialogDescription className="text-[13px] leading-relaxed">
               {L(
